@@ -157,11 +157,6 @@
 <h1>ELIASTORK LTD</h1>
 <p>Engineering &amp; Supply Solutions for Pharma &amp; Industry</p>
 </header>
-
-<section style="text-align:center; margin: 2rem 0;">
-  <img src="vision-banner.png" alt="Eliastork Vision Banner" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" />
-</section>
-
 <main>
 <div class="accordion-container"><button class="accordion">✨ About Us</button><div class="panel" >
 <ul>
@@ -194,6 +189,27 @@
 <strong>DUNS Number:</strong> 600831505</p>
 </section>
 </main>
+
+<section style="max-width: 960px; margin: 3rem auto; text-align: center;">
+  <h2 style="margin-bottom: 1rem;">Our Vision in Motion</h2>
+  <div id="slider" style="position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+    <img src="frame1.png" class="slide" style="width: 100%; display: block;" />
+    <img src="frame2.png" class="slide" style="width: 100%; display: none;" />
+    <img src="frame3.png" class="slide" style="width: 100%; display: none;" />
+    <img src="frame4.png" class="slide" style="width: 100%; display: none;" />
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+  setInterval(() => {
+    slides[current].style.display = 'none';
+    current = (current + 1) % slides.length;
+    slides[current].style.display = 'block';
+  }, 3000);
+</script>
+
 <footer>
 <p>Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
 </footer>
