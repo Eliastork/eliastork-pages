@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ELIASTORK Slider</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      font-family: sans-serif;
+    }
+    #slider-container {
+      width: 100%;
+      max-width: 1280px;
+      height: 720px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      background: #000;
+    }
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: none;
+      transition: opacity 0.5s ease;
+    }
+    .slide.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="slider-container">
+    <img src="frame1.png" class="slide active">
+    <img src="frame2.png" class="slide">
+    <img src="frame3.png" class="slide">
+    <img src="frame4.png" class="slide">
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 3000);
+  </script>
+</body>
+</html>
