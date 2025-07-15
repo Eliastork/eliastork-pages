@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ELIASTORK LTD – Engineering & Supply Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #f8fafc, #e2e8f0);
+      color: #1f2937;
+    }
+    header, footer {
+      background-color: #1e3a8a;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+    main {
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+    .accordion {
+      background-color: #1e3a8a;
+      color: white;
+      cursor: pointer;
+      padding: 1rem;
+      width: 100%;
+      border: none;
+      text-align: left;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      transition: background-color 0.3s;
+    }
+    .accordion:hover {
+      background-color: #374db7;
+    }
+    .panel {
+      display: none;
+      background-color: #f1f5f9;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .panel ul {
+      padding-left: 1.2rem;
+    }
+    .language-switcher {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(30, 58, 138, 0.9);
+      color: white;
+      padding: 0.4rem 0.7rem;
+      border-radius: 8px;
+      z-index: 999;
+      font-size: 1.2rem;
+    }
+    .language-switcher button {
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin: 0 0.2rem;
+    }
+    .language-switcher button:hover {
+      transform: scale(1.15);
+    }
+    video {
+      width: 100%;
+      max-width: 480px;
+      display: block;
+      margin: 1rem auto;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>ELIASTORK LTD</h1>
+  <p>Engineering & Supply Solutions for Pharma & Industry</p>
+</header>
+
+<div class="language-switcher">
+  <button onclick="setLanguage('en')" title="English">🇬🇧</button>
+  <button onclick="setLanguage('ru')" title="Русский">🇷🇺</button>
+  <button onclick="setLanguage('he')" title="עברית">🇮🇱</button>
+</div>
+
+<main>
+  <button class="accordion">✨ About Us</button>
+  <div class="panel">
+    <ul>
+      <li>Customized engineering solutions</li>
+      <li>Full-cycle project management</li>
+      <li>High-quality, compliant, and reliable service</li>
+    </ul>
+  </div>
+
+  <button class="accordion">📈 Key Offerings</button>
+  <div class="panel">
+    <ul>
+      <li>GMP Pharmaceutical Equipment: Mixing, granulation, tableting, packaging</li>
+      <li>CNC & Metalworking Machinery: Lathes, lasers, guillotines, accessories</li>
+      <li>Packaging & Sorting Systems</li>
+      <li>Temperature & Climate Test Chambers</li>
+      <li>Industrial Raw Materials & Metals</li>
+      <li>Auxiliary Equipment for Production & Storage</li>
+      <li>Water Distribution Systems: Pumps, valves, controls</li>
+      <li>Electrical Equipment for Industry</li>
+      <li>Modernization & Spare Parts Supply</li>
+    </ul>
+  </div>
+
+  <button class="accordion">✪ Why Choose Eliastork?</button>
+  <div class="panel">
+    <p>Eliastork Ltd. provides advanced, tailor-made solutions for pharmaceutical and industrial sectors.</p>
+    <video autoplay loop muted controls>
+      <source src="ELIASTORK_video_subtitles_debussy.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <button class="accordion">📢 Contact Us</button>
+  <div class="panel" style="display: block;">
+    <p><strong>📍 Address:</strong><br/>Emil Zola 28, Rishon LeZion, 7528251, Israel</p>
+    <p><strong>📞 Phones:</strong><br/>
+      <a href="https://wa.me/972525444823">+972-52-5444823</a><br/>
+      <a href="https://wa.me/972527204290">+972-52-7204290</a></p>
+    <p><strong>📧 Emails:</strong><br/>
+      <a href="mailto:maximchuchnov@eliastork.com">maximchuchnov@eliastork.com</a><br/>
+      <a href="mailto:vladimirpogost@eliastork.com">vladimirpogost@eliastork.com</a></p>
+    <p><strong>🏷 MOD Vendor ID:</strong> 11028835<br/>
+    <strong>🏢 Company Reg. No.:</strong> 516415296<br/>
+    <strong>📊 DUNS Number:</strong> 600831505</p>
+  </div>
+</main>
+
+<footer>
+  <p>Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
+</footer>
+
+<script>
+  document.querySelectorAll(".accordion").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const panel = btn.nextElementSibling;
+      const visible = panel.style.display === "block";
+      document.querySelectorAll(".panel").forEach(p => p.style.display = "none");
+      if (!visible) panel.style.display = "block";
+    });
+  });
+
+  function setLanguage(lang) {
+    alert("Language switch placeholder: " + lang);
+  }
+</script>
+
+</body>
+</html>
