@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELIASTORK LTD – Engineering & Supply Solutions</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #f0f4f8, #dbeafe);
+      color: #1e3a8a;
+    }
+    header {
+      background-color: #1e3a8a;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.2rem;
+    }
+    main {
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .accordion {
+      background-color: #1e3a8a;
+      color: white;
+      cursor: pointer;
+      padding: 1rem;
+      width: 100%;
+      border: none;
+      outline: none;
+      text-align: left;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+      margin-top: 0.5rem;
+    }
+    .accordion:hover {
+      background-color: #374db7;
+    }
+    .panel {
+      padding: 1rem;
+      background-color: #e0f2fe;
+      display: none;
+      overflow: hidden;
+    }
+    .footer {
+      background-color: #1e3a8a;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    .lang-switcher {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(30,58,138,0.9);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+    }
+    .lang-switcher button {
+      border: none;
+      background: none;
+      color: white;
+      font-size: 1.2rem;
+      margin: 0 0.3rem;
+      cursor: pointer;
+    }
+    .lang-switcher button:hover {
+      transform: scale(1.15);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ELIASTORK LTD</h1>
+    <p id="subtitle">Engineering & Supply Solutions for Pharma & Industry</p>
+  </header>
+
+  <div class="lang-switcher">
+    <button onclick="setLanguage('en')">🇬🇧</button>
+    <button onclick="setLanguage('ru')">🇷🇺</button>
+    <button onclick="setLanguage('he')">🇮🇱</button>
+  </div>
+
+  <main>
+    <button class="accordion" id="aboutTitle"></button>
+    <div class="panel" id="aboutContent"></div>
+
+    <button class="accordion" id="offeringsTitle"></button>
+    <div class="panel" id="offeringsContent"></div>
+
+    <button class="accordion" id="whyTitle"></button>
+    <div class="panel" id="whyContent"></div>
+
+    <button class="accordion" id="contactTitle"></button>
+    <div class="panel" id="contactContent"></div>
+  </main>
+
+  <div class="footer" id="footerText">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</div>
+
+  <script>
+    const translations = {
+      en: {
+        subtitle: "Engineering & Supply Solutions for Pharma & Industry",
+        aboutTitle: "✨ About Us",
+        offeringsTitle: "📈 Key Offerings",
+        whyTitle: "✪ Why Choose Eliastork?",
+        contactTitle: "📢 Contact Us",
+        footer: "Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD",
+        about: "<ul><li>Customized engineering solutions</li><li>Full-cycle project management</li><li>Reliable and certified service</li></ul>",
+        offerings: "<ul><li>GMP Pharmaceutical Equipment</li><li>CNC & Metalworking Machinery</li><li>Packaging Systems</li></ul>",
+        why: "<p>ELIASTORK provides advanced, compliant, and tailor-made engineering and supply solutions.</p>",
+        contact: "<p>Address: Emil Zola 28, Rishon LeZion, Israel<br/>Email: contact@eliastork.com<br/>Phone: +972-52-5444823</p>"
+      },
+      ru: {
+        subtitle: "Инженерные и снабженческие решения для фармы и промышленности",
+        aboutTitle: "✨ О нас",
+        offeringsTitle: "📈 Ключевые предложения",
+        whyTitle: "✪ Почему ELIASTORK?",
+        contactTitle: "📢 Контакты",
+        footer: "Надёжная инженерия. Проверенные решения. © 2025 ELIASTORK LTD",
+        about: "<ul><li>Индивидуальные инженерные решения</li><li>Полный цикл сопровождения</li><li>Надёжный и сертифицированный сервис</li></ul>",
+        offerings: "<ul><li>Фармацевтическое оборудование</li><li>Станки и оборудование</li><li>Системы упаковки</li></ul>",
+        why: "<p>ELIASTORK предлагает адаптированные под задачи клиента решения с соблюдением всех стандартов.</p>",
+        contact: "<p>Адрес: Эмиль Золя 28, Ришон ЛеЦион, Израиль<br/>Email: contact@eliastork.com<br/>Тел: +972-52-5444823</p>"
+      },
+      he: {
+        subtitle: "פתרונות הנדסה ואספקה לפרמה ותעשייה",
+        aboutTitle: "✨ עלינו",
+        offeringsTitle: "📈 הצעות עיקריות",
+        whyTitle: "✪ למה לבחור ב־ELIASTORK?",
+        contactTitle: "📢 צור קשר",
+        footer: "הנדסה מהימנה. פתרונות אמינים. © 2025 ELIASTORK LTD",
+        about: "<ul><li>פתרונות מותאמים אישית</li><li>ניהול פרויקטים מלא</li><li>שירות מוסמך ואמין</li></ul>",
+        offerings: "<ul><li>ציוד פרמצבטי</li><li>מכונות לעיבוד מתכת</li><li>מערכות אריזה</li></ul>",
+        why: "<p>ELIASTORK מספקת פתרונות מותאמים אישית בהתאם לסטנדרטים בינלאומיים.</p>",
+        contact: "<p>כתובת: אמיל זולא 28, ראשון לציון, ישראל<br/>Email: contact@eliastork.com<br/>טלפון: +972-52-5444823</p>"
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+      document.documentElement.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
+      document.getElementById("subtitle").textContent = t.subtitle;
+      document.getElementById("aboutTitle").textContent = t.aboutTitle;
+      document.getElementById("offeringsTitle").textContent = t.offeringsTitle;
+      document.getElementById("whyTitle").textContent = t.whyTitle;
+      document.getElementById("contactTitle").textContent = t.contactTitle;
+      document.getElementById("footerText").textContent = t.footer;
+      document.getElementById("aboutContent").innerHTML = t.about;
+      document.getElementById("offeringsContent").innerHTML = t.offerings;
+      document.getElementById("whyContent").innerHTML = t.why;
+      document.getElementById("contactContent").innerHTML = t.contact;
+    }
+
+    document.querySelectorAll(".accordion").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const panel = btn.nextElementSibling;
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+      });
+    });
+
+    // Автоопределение языка
+    const browserLang = navigator.language.slice(0, 2);
+    setLanguage(['en', 'ru', 'he'].includes(browserLang) ? browserLang : 'en');
+  </script>
+</body>
+</html>
