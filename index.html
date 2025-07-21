@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ELIASTORK LTD – Engineering & Supply Solutions</title>
   <style>
+    /* ---------- General ---------- */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -15,20 +16,21 @@
     body[dir="rtl"] { text-align: right; }
     body[dir="ltr"] { text-align: left; }
 
+    /* ---------- Header & Footer ---------- */
     header {
-      background: none;
-      color: #e0e8f0;
-      text-align: left;
+      background: none;            /* без фона */
+      color: #e0e8f0;              /* светло‑голубой текст */
+      text-align: left;            /* выравнивание влево */
       padding: 1rem 2rem;
-      text-shadow: none;
+      text-shadow: none;           /* убираем тень */
     }
     header h1 {
-      display: inline;
+      display: inline;             /* одна строка */
       font-size: 1.5rem;
       margin-right: 1rem;
     }
     header p {
-      display: inline;
+      display: inline;             /* одна строка */
       font-size: 1.2rem;
     }
 
@@ -40,6 +42,7 @@
       text-shadow: 0 0 6px black;
     }
 
+    /* ---------- Language Switcher ---------- */
     .language-switcher {
       display: flex;
       justify-content: center;
@@ -53,6 +56,7 @@
       background: none;
     }
 
+    /* ---------- Cloud Buttons / Accordions ---------- */
     .cloud-button {
       background: url('cloud-original-transparent.png') no-repeat center center;
       background-size: contain;
@@ -63,7 +67,7 @@
       color: white;
       font-size: 1.5rem;
       cursor: pointer;
-      margin: 1rem 0 1rem auto;
+      margin: 1rem 0 1rem auto;    /* сдвигаем вправо */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -86,8 +90,8 @@
     }
 
     .accordion-container {
-      max-width: 600px;
-      margin-left: auto;
+      max-width: 600px;            /* немного уже */
+      margin-left: auto;           /* прижимаем вправо */
       margin-right: 0;
     }
 
@@ -107,6 +111,7 @@
       transform: translateY(0);
     }
 
+    /* ---------- Contact columns ---------- */
     .contact-columns {
       display: flex;
       flex-wrap: wrap;
@@ -116,6 +121,7 @@
       flex: 1;
     }
 
+    /* ---------- Mobile ---------- */
     @media (max-width: 600px) {
       .cloud-button {
         height: 60px;
@@ -130,15 +136,17 @@
 <body>
 <header>
   <h1>ELIASTORK LTD</h1>
-  <p>Engineering & Supply Solutions for Pharma & Industry</p>
+  <p id="slogan">Engineering &amp; Supply Solutions for Pharma &amp; Industry</p>
 </header>
 
+<!-- ========= Language Switcher ========= -->
 <div class="language-switcher">
   <button onclick="setLanguage('en')">🇬🇧</button>
   <button onclick="setLanguage('ru')">🇷🇺</button>
   <button onclick="setLanguage('he')">🇮🇱</button>
 </div>
 
+<!-- ========= Accordions ========= -->
 <div class="accordion-container">
   <button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
   <div class="panel"><ul id="about-list"></ul></div>
@@ -169,15 +177,70 @@
   </div>
 </div>
 
+<!-- ========= Footer ========= -->
 <footer>
   <p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
 </footer>
 
+<!-- ========= Scripts ========= -->
 <script>
 function togglePanel(btn) {
   const panel = btn.nextElementSibling;
   panel.classList.toggle("show");
 }
-</script>
-</body>
-</html>
+
+const translations = {
+  en: {
+    about: [
+      "We are an engineering and supply company with expertise in pharma and industry.",
+      "Based in Israel, serving clients worldwide."
+    ],
+    offerings: [
+      "Custom equipment sourcing and engineering support.",
+      "Global logistics and MOD-certified procurement."
+    ],
+    why: "Clients choose us for quality, transparency, and reliability.",
+    address: "Emil Zola 28, Rishon LeZion, 7528251, Israel",
+    phones: "+972-52-5444823 / +972-52-7204290",
+    emails: "maximchuchnov@eliastork.com / vladimirpogost@eliastork.com",
+    mod: "11028835",
+    reg: "516415296",
+    duns: "600831505",
+    contact: "📢 Contact Us",
+    footer: "Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD"
+  },
+  ru: {
+    about: [
+      "Мы — инженерно-снабженческая компания с опытом в фармацевтике и промышленности.",
+      "Находимся в Израиле, работаем по всему миру."
+    ],
+    offerings: [
+      "Поиск специализированного оборудования и техническая поддержка.",
+      "Глобальная логистика и сертифицированные поставки для МО."
+    ],
+    why: "Нас выбирают за качество, честность и надежность.",
+    address: "Эмиль Золя 28, Ришон ле-Цион, 7528251, Израиль",
+    phones: "+972-52-5444823 / +972-52-7204290",
+    emails: "maximchuchnov@eliastork.com / vladimirpogost@eliastork.com",
+    mod: "11028835",
+    reg: "516415296",
+    duns: "600831505",
+    contact: "📢 Связаться с нами",
+    footer: "Инженерные решения. Надежные поставки. © 2025 ELIASTORK LTD"
+  },
+  he: {
+    about: [
+      "חברת הנדסה ואספקה עם מומחיות בפרמצבטיקה ותעשייה.",
+      "مמוקמים בישראל, מספקים שירותים עולמיים."
+    ],
+    offerings: [
+      "איתור ציוד ייחודי ותמיכה הנדסית.",
+      "לوجיסטיקה גלובלית ואספקה מוסמכת למשרד הביטחון."
+    ],
+    why: "לקוחות בוחרים בנו בזכות איכות, אמינות ושקיפות.",
+    address: "אימיל זולא 28, ראשון לציון, 7528251, ישראל",
+    phones: "+972-52-5444823 / +972-52-7204290",
+    emails: "maximchuchnov@eliastork.com / vladimirpogost@eliastork.com",
+    mod: "11028835",
+    reg: "516415296",
+    duns: "600831505",
