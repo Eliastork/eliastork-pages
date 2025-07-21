@@ -17,18 +17,16 @@
 
     header {
       background: none;
-      color: #e0e8f0; /* светлее */
+      color: #e0e8f0;
       text-align: left;
       padding: 1rem 2rem;
       text-shadow: none;
     }
-
     header h1 {
       display: inline;
       font-size: 1.5rem;
       margin-right: 1rem;
     }
-
     header p {
       display: inline;
       font-size: 1.2rem;
@@ -134,3 +132,52 @@
   <h1>ELIASTORK LTD</h1>
   <p>Engineering & Supply Solutions for Pharma & Industry</p>
 </header>
+
+<div class="language-switcher">
+  <button onclick="setLanguage('en')">🇬🇧</button>
+  <button onclick="setLanguage('ru')">🇷🇺</button>
+  <button onclick="setLanguage('he')">🇮🇱</button>
+</div>
+
+<div class="accordion-container">
+  <button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
+  <div class="panel"><ul id="about-list"></ul></div>
+
+  <button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer">Key Offerings</span></button>
+  <div class="panel"><ul id="offerings-list"></ul></div>
+
+  <button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
+  <div class="panel"><p id="why-text"></p></div>
+
+  <button class="cloud-button" onclick="togglePanel(this)">📢 <span id="acc-contact">Contact Us</span></button>
+  <div class="panel">
+    <h2 id="contact-title">📢 Contact Us</h2>
+    <div class="contact-columns">
+      <div>
+        <p><strong>📍 Address:</strong><br><span id="addr-value"></span></p>
+        <p><strong>📞 Phones:</strong><br><span id="phone-value"></span></p>
+      </div>
+      <div>
+        <p><strong>📧 Emails:</strong><br><span id="email-value"></span></p>
+        <p>
+          <strong>🏷 MOD Vendor ID:</strong> <span id="mod-value"></span><br>
+          <strong>🏢 Company Reg. No.:</strong> <span id="reg-value"></span><br>
+          <strong>📊 DUNS Number:</strong> <span id="duns-value"></span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
+</footer>
+
+<script>
+function togglePanel(btn) {
+  const panel = btn.nextElementSibling;
+  panel.classList.toggle("show");
+}
+</script>
+</body>
+</html>
