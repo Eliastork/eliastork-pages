@@ -49,28 +49,28 @@
           </video>
         </div>
       </div>
-    </div>
 
-    <button class="accordion contact-toggle">📢 Contact Us</button>
-    <div class="panel contact">
-      <h2 class="contact-title">📢 Contact Us</h2>
-      <div class="contact-columns">
-        <div>
-          <p><strong>📍 Address:</strong><br/>Emil Zola 28, Rishon LeZion, 7528251, Israel</p>
-          <p><strong>📞 Phones:</strong><br/>
-            <a href="https://wa.me/972525444823" target="_blank">+972-52-5444823 (Maxim Chuchnov)</a><br/>
-            <a href="https://wa.me/972527204290" target="_blank">+972-52-7204290 (Vladimir Pogost)</a>
-          </p>
-        </div>
-        <div>
-          <p><strong>📧 Emails:</strong><br/>
-            <a href="mailto:maximchuchnov@eliastork.com">maximchuchnov@eliastork.com</a><br/>
-            <a href="mailto:vladimirpogost@eliastork.com">vladimirpogost@eliastork.com</a>
-          </p>
-          <p><strong>🏷 MOD Vendor ID:</strong> 11028835<br/>
-            <strong>🏢 Company Reg. No.:</strong> 516415296<br/>
-            <strong>📊 DUNS Number:</strong> 600831505
-          </p>
+      <button class="accordion">📢 Contact Us</button>
+      <div class="panel contact">
+        <h2 class="contact-title">📢 Contact Us</h2>
+        <div class="contact-columns">
+          <div>
+            <p><strong>📍 Address:</strong><br/>Emil Zola 28, Rishon LeZion, 7528251, Israel</p>
+            <p><strong>📞 Phones:</strong><br/>
+              <a href="https://wa.me/972525444823" target="_blank">+972-52-5444823 (Maxim Chuchnov)</a><br/>
+              <a href="https://wa.me/972527204290" target="_blank">+972-52-7204290 (Vladimir Pogost)</a>
+            </p>
+          </div>
+          <div>
+            <p><strong>📧 Emails:</strong><br/>
+              <a href="mailto:maximchuchnov@eliastork.com">maximchuchnov@eliastork.com</a><br/>
+              <a href="mailto:vladimirpogost@eliastork.com">vladimirpogost@eliastork.com</a>
+            </p>
+            <p><strong>🏷 MOD Vendor ID:</strong> 11028835<br/>
+              <strong>🏢 Company Reg. No.:</strong> 516415296<br/>
+              <strong>📊 DUNS Number:</strong> 600831505
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -78,6 +78,7 @@
   <footer>
     <p class="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
   </footer>
+
   <script>
     const translations = {
       en: {
@@ -164,18 +165,24 @@
     });
 
     function setLanguage(lang) {
+      const acc = document.querySelectorAll('.accordion');
       document.documentElement.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
-      document.querySelector('.accordion:nth-of-type(1)').textContent = "✨ " + translations[lang].aboutUs;
-      document.querySelector('.accordion:nth-of-type(2)').textContent = "📈 " + translations[lang].offerings;
-      document.querySelector('.accordion:nth-of-type(3)').textContent = "✪ " + translations[lang].whyChoose;
-      document.querySelector('.contact-toggle').textContent = "📢 " + translations[lang].contactTitle;
-      document.querySelector('.contact-title').textContent = "📢 " + translations[lang].contactTitle;
+      if (acc.length >= 4) {
+        acc[0].textContent = "✨ " + translations[lang].aboutUs;
+        acc[1].textContent = "📈 " + translations[lang].offerings;
+        acc[2].textContent = "✪ " + translations[lang].whyChoose;
+        acc[3].textContent = "📢 " + translations[lang].contactTitle;
+      }
+      const contactTitle = document.querySelector('.contact-title');
+      if (contactTitle) contactTitle.textContent = "📢 " + translations[lang].contactTitle;
       document.querySelector('.footer-text').textContent = translations[lang].footer;
 
-      const [aboutPanel, offeringsPanel, whyPanel] = document.querySelectorAll('.panel');
-      aboutPanel.querySelector('.about-list').innerHTML = translations[lang].aboutList.map(item => `<li>${item}</li>`).join('');
-      offeringsPanel.querySelector('.offerings-list').innerHTML = translations[lang].offeringsList.map(item => `<li>${item}</li>`).join('');
-      whyPanel.querySelector('.why-text-placeholder').textContent = translations[lang].whyText;
+      const panels = document.querySelectorAll('.panel');
+      if (panels.length >= 3) {
+        panels[0].querySelector('ul').innerHTML = translations[lang].aboutList.map(item => `<li>${item}</li>`).join('');
+        panels[1].querySelector('ul').innerHTML = translations[lang].offeringsList.map(item => `<li>${item}</li>`).join('');
+        panels[2].querySelector('.why-text-placeholder').textContent = translations[lang].whyText;
+      }
     }
   </script>
 </body>
