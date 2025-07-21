@@ -23,9 +23,9 @@
 </header>
 
 <div class="language-switcher">
-  <button onclick="setLanguage('en')">🇬🇧</button>
-  <button onclick="setLanguage('ru')">🇷🇺</button>
-  <button onclick="setLanguage('he')">🇮🇱</button>
+  <button onclick="setLanguage('en')" aria-label="English">🇬🇧</button>
+  <button onclick="setLanguage('ru')" aria-label="Russian">🇷🇺</button>
+  <button onclick="setLanguage('he')" aria-label="Hebrew">🇮🇱</button>
 </div>
 
 <div class="accordion-container">
@@ -168,4 +168,44 @@ const translations = {
       "מכונות וציוד לעיבוד מתכות",
       "מערכות אריזה ומיון"
     ],
-    why: "ELIASTORK מספקת פתרונות מתקדמים מותאמים למגזרי הפרמצה והתעשייה.
+    why: "ELIASTORK מספקת פתרונות מתקדמים מותאמים למגזרי הפרמצה והתעשייה."
+  }
+};
+
+function setLanguage(lang) {
+  const t = translations[lang];
+  document.getElementById("slogan").textContent = t.slogan;
+  document.getElementById("footer-text").textContent = t.footer;
+  document.getElementById("acc-about").textContent = t.acc_about;
+  document.getElementById("acc-offer").textContent = t.acc_offer;
+  document.getElementById("acc-why").textContent = t.acc_why;
+  document.getElementById("acc-contact").textContent = t.acc_contact;
+  document.getElementById("contact-title").textContent = t.contact_title;
+  document.getElementById("addr-label").textContent = t.addr;
+  document.getElementById("phone-label").textContent = t.phone;
+  document.getElementById("email-label").textContent = t.email;
+  document.getElementById("mod-label").textContent = t.mod;
+  document.getElementById("reg-label").textContent = t.reg;
+  document.getElementById("duns-label").textContent = t.duns;
+
+  document.getElementById("addr-value").textContent = t.addr_value;
+  document.getElementById("phone-value").innerHTML = t.phone_value.replace(/\n/g, "<br>");
+  document.getElementById("email-value").innerHTML = t.email_value.replace(/\n/g, "<br>");
+  document.getElementById("mod-value").textContent = t.mod_value;
+  document.getElementById("reg-value").textContent = t.reg_value;
+  document.getElementById("duns-value").textContent = t.duns_value;
+
+  document.getElementById("about-list").innerHTML = t.about.map(i => `<li>${i}</li>`).join('');
+  document.getElementById("offerings-list").innerHTML = t.offer.map(i => `<li>${i}</li>`).join('');
+  document.getElementById("why-text").textContent = t.why;
+}
+
+function togglePanel(btn) {
+  const panel = btn.nextElementSibling;
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+}
+
+setLanguage("en");
+</script>
+</body>
+</html>
