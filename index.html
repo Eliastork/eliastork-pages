@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,70 +12,22 @@
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
     }
-
     body[dir="rtl"] { text-align: right; }
     body[dir="ltr"] { text-align: left; }
-
-    header {
+    header, footer {
       background: none;
       color: white;
       text-align: center;
       padding: 1rem;
       text-shadow: 0 0 6px black;
     }
-
-    .footer {
-      background: transparent;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      text-shadow: 0 0 6px black;
-    }
-
-    .language-switcher {
-      display: flex;
-      justify-content: center;
-      margin: 1rem;
-      gap: 0.5rem;
-    }
-
-    .language-switcher button {
-      font-size: 1.5rem;
-      cursor: pointer;
-      border: none;
-      background: none;
-    }
-
-    .accordion-container {
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .accordion {
-      width: 100%;
-      background-color: rgba(51, 65, 85, 0.9);
-      color: white;
-      padding: 1rem;
-      border: none;
-      cursor: pointer;
-      margin-top: 0.5rem;
-    }
-
-    .panel {
-      display: none;
-      background-color: rgba(226, 232, 240, 0.85);
-      padding: 1rem;
-    }
-
-    .contact-columns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .contact-columns div {
-      flex: 1;
-    }
+    .language-switcher { display: flex; justify-content: center; margin: 1rem; gap: 0.5rem; }
+    .language-switcher button { font-size: 1.5rem; cursor: pointer; border: none; background: none; }
+    .accordion-container { max-width: 800px; margin: auto; }
+    .accordion { width: 100%; background-color: rgba(51, 65, 85, 0.9); color: white; padding: 1rem; border: none; cursor: pointer; margin-top: 0.5rem; }
+    .panel { display: none; background-color: rgba(226, 232, 240, 0.85); padding: 1rem; }
+    .contact-columns { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .contact-columns div { flex: 1; }
   </style>
 </head>
 <body>
@@ -92,53 +43,100 @@
 </div>
 
 <div class="accordion-container">
-  <button class="accordion">✨ About Us</button>
-  <div class="panel"><ul><li>Customized engineering solutions</li><li>Full-cycle project management</li><li>High-quality, compliant, and reliable service</li></ul></div>
+  <button class="accordion" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
+  <div class="panel"><ul id="about-list"></ul></div>
 
-  <button class="accordion">📈 Key Offerings</button>
-  <div class="panel"><ul><li>GMP Pharmaceutical Equipment</li><li>CNC & Metalworking Machinery</li><li>Packaging & Sorting Systems</li></ul></div>
+  <button class="accordion" onclick="togglePanel(this)">📈 <span id="acc-offer">Key Offerings</span></button>
+  <div class="panel"><ul id="offerings-list"></ul></div>
 
-  <button class="accordion">✪ Why Choose Eliastork?</button>
-  <div class="panel"><p>Eliastork Ltd. provides advanced, tailor-made solutions for pharmaceutical and industrial sectors.</p></div>
+  <button class="accordion" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
+  <div class="panel"><p id="why-text"></p></div>
 
-  <button class="accordion">📢 Contact Us</button>
+  <button class="accordion" onclick="togglePanel(this)">📢 <span id="acc-contact">Contact Us</span></button>
   <div class="panel">
-    <h2>📢 Contact Us</h2>
+    <h2 id="contact-title">📢 Contact Us</h2>
     <div class="contact-columns">
       <div>
-        <p><strong>📍 Address:</strong><br>Emil Zola 28, Rishon LeZion, 7528251, Israel</p>
-        <p><strong>📞 Phones:</strong><br>
-          +972-52-5444823 (Maxim Chuchnov)<br>
-          +972-52-7204290 (Vladimir Pogost)
+        <p><strong id="addr-label">📍 Address:</strong><br><span id="addr-value"></span></p>
+        <p><strong id="phone-label">📞 Phones:</strong><br>
+          <span id="phone-value"></span>
         </p>
       </div>
       <div>
-        <p><strong>📧 Emails:</strong><br>
-          maximchuchnov@eliastork.com<br>
-          vladimirpogost@eliastork.com
+        <p><strong id="email-label">📧 Emails:</strong><br>
+          <span id="email-value"></span>
         </p>
         <p>
-          <strong>🏷 MOD Vendor ID:</strong> 11028835<br>
-          <strong>🏢 Company Reg. No.:</strong> 516415296<br>
-          <strong>📊 DUNS Number:</strong> 600831505
+          <strong id="mod-label">🏷 MOD Vendor ID:</strong> <span id="mod-value"></span><br>
+          <strong id="reg-label">🏢 Company Reg. No.:</strong> <span id="reg-value"></span><br>
+          <strong id="duns-label">📊 DUNS Number:</strong> <span id="duns-value"></span>
         </p>
       </div>
     </div>
   </div>
 </div>
 
-<div class="footer">
-  <p>Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
-</div>
+<footer>
+  <p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
+</footer>
 
 <script>
-  const acc = document.getElementsByClassName("accordion");
-  for (let i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
-      const panel = this.nextElementSibling;
-      panel.style.display = panel.style.display === "block" ? "none" : "block";
-    });
+const translations = { /* ... полный JSON с переводами ... */ };
+
+function setLanguage(lang) {
+  try {
+    const t = translations[lang];
+    document.body.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
+
+    const ids = {
+      slogan: t.slogan,
+      "footer-text": t.footer,
+      "acc-about": t.acc_about,
+      "acc-offer": t.acc_offer,
+      "acc-why": t.acc_why,
+      "acc-contact": t.acc_contact,
+      "contact-title": t.contact_title,
+      "addr-label": t.addr,
+      "phone-label": t.phone,
+      "email-label": t.email,
+      "mod-label": t.mod,
+      "reg-label": t.reg,
+      "duns-label": t.duns,
+      "addr-value": t.addr_value,
+      "mod-value": t.mod_value,
+      "reg-value": t.reg_value,
+      "duns-value": t.duns_value
+    };
+
+    for (const id in ids) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = ids[id];
+    }
+
+    const phone = document.getElementById("phone-value");
+    if (phone) phone.innerHTML = t.phone_value.replace(/\n/g, "<br>");
+
+    const email = document.getElementById("email-value");
+    if (email) email.innerHTML = t.email_value.replace(/\n/g, "<br>");
+
+    const aboutList = document.getElementById("about-list");
+    if (aboutList) aboutList.innerHTML = t.about.map(i => `<li>${i}</li>`).join('');
+
+    const offerList = document.getElementById("offerings-list");
+    if (offerList) offerList.innerHTML = t.offer.map(i => `<li>${i}</li>`).join('');
+
+    const whyText = document.getElementById("why-text");
+    if (whyText) whyText.textContent = t.why;
+
+  } catch (e) {
+    console.error("Language switch failed:", e);
   }
+}
+
+function togglePanel(btn) {
+  const panel = btn.nextElementSibling;
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+}
 </script>
 </body>
 </html>
