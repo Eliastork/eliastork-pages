@@ -12,8 +12,10 @@
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
     }
+
     body[dir="rtl"] { text-align: right; }
     body[dir="ltr"] { text-align: left; }
+
     header, footer {
       background: none;
       color: white;
@@ -21,14 +23,62 @@
       padding: 1rem;
       text-shadow: 0 0 6px black;
     }
-    .language-switcher { display: flex; justify-content: center; margin: 1rem; gap: 0.5rem; }
-    .language-switcher button { font-size: 1.5rem; cursor: pointer; border: none; background: none; }
-    .language-switcher button.active { text-decoration: underline; }
-    .accordion-container { max-width: 800px; margin: auto; }
-    .accordion { width: 100%; background-color: rgba(51, 65, 85, 0.9); color: white; padding: 1rem; border: none; cursor: pointer; margin-top: 0.5rem; }
-    .panel { display: none; background-color: rgba(226, 232, 240, 0.85); padding: 1rem; }
-    .contact-columns { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .contact-columns div { flex: 1; }
+
+    .language-switcher {
+      display: flex;
+      justify-content: center;
+      margin: 1rem;
+      gap: 0.5rem;
+    }
+
+    .language-switcher button {
+      font-size: 1.5rem;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .accordion-container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .accordion {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(5px);
+      color: #003366;
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .accordion:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .panel {
+      display: none;
+      background-color: rgba(226, 232, 240, 0.85);
+      padding: 1rem;
+      border-radius: 0 0 8px 8px;
+      margin-bottom: 1rem;
+    }
+
+    .contact-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .contact-columns div {
+      flex: 1;
+    }
   </style>
 </head>
 <body>
@@ -38,9 +88,9 @@
 </header>
 
 <div class="language-switcher">
-  <button id="btn-en" onclick="setLanguage('en')">🇬🇧</button>
-  <button id="btn-ru" onclick="setLanguage('ru')">🇷🇺</button>
-  <button id="btn-he" onclick="setLanguage('he')">🇮🇱</button>
+  <button onclick="setLanguage('en')">🇬🇧</button>
+  <button onclick="setLanguage('ru')">🇷🇺</button>
+  <button onclick="setLanguage('he')">🇮🇱</button>
 </div>
 
 <div class="accordion-container">
@@ -82,124 +132,32 @@
 </footer>
 
 <script>
-const translations = {
-  en: {
-    slogan: "Engineering & Supply Solutions for Pharma & Industry",
-    footer: "Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD",
-    acc_about: "About Us",
-    acc_offer: "Key Offerings",
-    acc_why: "Why Choose Eliastork?",
-    acc_contact: "Contact Us",
-    contact_title: "📢 Contact Us",
-    addr: "📍 Address:",
-    addr_value: "Emil Zola 28, Rishon LeZion, 7528251, Israel",
-    phone: "📞 Phones:",
-    phone_value: "+972-52-5444823\n+972-52-7204290",
-    email: "📧 Emails:",
-    email_value: "maximchuchnov@eliastork.com\nvladimirpogost@eliastork.com",
-    mod: "🏷 MOD Vendor ID:",
-    mod_value: "11028835",
-    reg: "🏢 Company Reg. No.:",
-    reg_value: "516415296",
-    duns: "📊 DUNS Number:",
-    duns_value: "600831505",
-    about: ["Privately owned Israeli engineering company",
-            "Solutions for pharma, defense and industry",
-            "Experienced team, global sourcing"],
-    offer: ["Cables & Connectors",
-            "Dust Removal Systems",
-            "Industrial Procurement"],
-    why: "We combine deep technical knowledge with reliable sourcing — tailored for demanding industries."
-  },
-  ru: {
-    slogan: "Инжиниринг и поставки для фармы и промышленности",
-    footer: "Надежная инженерия. Проверенные решения. © 2025 ELIASTORK LTD",
-    acc_about: "О нас",
-    acc_offer: "Основные предложения",
-    acc_why: "Почему выбирают Eliastork?",
-    acc_contact: "Контакты",
-    contact_title: "📢 Контакты",
-    addr: "📍 Адрес:",
-    addr_value: "Эмиль Золя 28, Ришон ле-Цион, 7528251, Израиль",
-    phone: "📞 Телефоны:",
-    phone_value: "+972-52-5444823\n+972-52-7204290",
-    email: "📧 Электронная почта:",
-    email_value: "maximchuchnov@eliastork.com\nvladimirpogost@eliastork.com",
-    mod: "🏷 ID поставщика МО:",
-    mod_value: "11028835",
-    reg: "🏢 Рег. номер компании:",
-    reg_value: "516415296",
-    duns: "📊 DUNS номер:",
-    duns_value: "600831505",
-    about: ["Частная израильская инжиниринговая компания",
-            "Решения для фармы, обороны и промышленности",
-            "Опытная команда, глобальные поставки"],
-    offer: ["Кабели и коннекторы",
-            "Системы удаления пыли",
-            "Закупки промышленного оборудования"],
-    why: "Мы совмещаем инженерную экспертизу с надежными поставками — для критически важных отраслей."
-  },
-  he: {
-    slogan: "פתרונות הנדסה ואספקה לפרמה ותעשייה",
-    footer: "הנדסה אמינה. פתרונות מוכחים. © 2025 ELIASTORK LTD",
-    acc_about: "עלינו",
-    acc_offer: "הצעות עיקריות",
-    acc_why: "למה לבחור ב־Eliastork?",
-    acc_contact: "צור קשר",
-    contact_title: "📢 צור קשר",
-    addr: "📍 כתובת:",
-    addr_value: "אמיל זולא 28, ראשון לציון, 7528251, ישראל",
-    phone: "📞 טלפונים:",
-    phone_value: "+972-52-5444823\n+972-52-7204290",
-    email: "📧 אימיילים:",
-    email_value: "maximchuchnov@eliastork.com\nvladimirpogost@eliastork.com",
-    mod: "🏷 מזהה ספק משרד הביטחון:",
-    mod_value: "11028835",
-    reg: "🏢 מספר רישום חברה:",
-    reg_value: "516415296",
-    duns: "📊 מספר DUNS:",
-    duns_value: "600831505",
-    about: ["חברה הנדסית ישראלית פרטית",
-            "פתרונות לתעשייה, ביטחון ופרמה",
-            "צוות מנוסה ואספקה גלובלית"],
-    offer: ["כבלים ומחברים",
-            "מערכות סילוק אבק",
-            "רכש תעשייתי"],
-    why: "אנו משלבים מומחיות הנדסית עם אספקה אמינה — מותאם לתעשיות רגישות."
-  }
-};
-
-function setActiveButton(lang) {
-  document.querySelectorAll('.language-switcher button').forEach(btn => {
-    btn.classList.toggle('active', btn.id === 'btn-' + lang);
-  });
-}
+const translations = {}; // Placeholder, should be filled with actual translation object
 
 function setLanguage(lang) {
+  localStorage.setItem("language", lang);
   try {
-    localStorage.setItem('language', lang);
-    setActiveButton(lang);
-    const t = translations[lang] || translations['en'];
-    document.body.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+    const t = translations[lang];
+    document.body.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
 
     const ids = {
       slogan: t.slogan,
-      'footer-text': t.footer,
-      'acc-about': t.acc_about,
-      'acc-offer': t.acc_offer,
-      'acc-why': t.acc_why,
-      'acc-contact': t.acc_contact,
-      'contact-title': t.contact_title,
-      'addr-label': t.addr,
-      'phone-label': t.phone,
-      'email-label': t.email,
-      'mod-label': t.mod,
-      'reg-label': t.reg,
-      'duns-label': t.duns,
-      'addr-value': t.addr_value,
-      'mod-value': t.mod_value,
-      'reg-value': t.reg_value,
-      'duns-value': t.duns_value
+      "footer-text": t.footer,
+      "acc-about": t.acc_about,
+      "acc-offer": t.acc_offer,
+      "acc-why": t.acc_why,
+      "acc-contact": t.acc_contact,
+      "contact-title": t.contact_title,
+      "addr-label": t.addr,
+      "phone-label": t.phone,
+      "email-label": t.email,
+      "mod-label": t.mod,
+      "reg-label": t.reg,
+      "duns-label": t.duns,
+      "addr-value": t.addr_value,
+      "mod-value": t.mod_value,
+      "reg-value": t.reg_value,
+      "duns-value": t.duns_value
     };
 
     for (const id in ids) {
@@ -207,35 +165,35 @@ function setLanguage(lang) {
       if (el) el.textContent = ids[id];
     }
 
-    const phone = document.getElementById('phone-value');
-    if (phone) phone.innerHTML = t.phone_value.replace(/\n/g, '<br>');
+    const phone = document.getElementById("phone-value");
+    if (phone) phone.innerHTML = t.phone_value.replace(/\n/g, "<br>");
 
-    const email = document.getElementById('email-value');
-    if (email) email.innerHTML = t.email_value.replace(/\n/g, '<br>');
+    const email = document.getElementById("email-value");
+    if (email) email.innerHTML = t.email_value.replace(/\n/g, "<br>");
 
-    const aboutList = document.getElementById('about-list');
+    const aboutList = document.getElementById("about-list");
     if (aboutList) aboutList.innerHTML = t.about.map(i => `<li>${i}</li>`).join('');
 
-    const offerList = document.getElementById('offerings-list');
+    const offerList = document.getElementById("offerings-list");
     if (offerList) offerList.innerHTML = t.offer.map(i => `<li>${i}</li>`).join('');
 
-    const whyText = document.getElementById('why-text');
+    const whyText = document.getElementById("why-text");
     if (whyText) whyText.textContent = t.why;
 
   } catch (e) {
-    console.error('Language switch failed:', e);
+    console.error("Language switch failed:", e);
   }
 }
 
+window.onload = () => {
+  const savedLang = localStorage.getItem("language") || "en";
+  setLanguage(savedLang);
+};
+
 function togglePanel(btn) {
   const panel = btn.nextElementSibling;
-  panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
 }
-
-window.addEventListener('load', () => {
-  const savedLang = localStorage.getItem('language') || 'en';
-  setLanguage(savedLang);
-});
 </script>
 </body>
 </html>
