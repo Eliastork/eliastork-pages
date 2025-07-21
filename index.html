@@ -1,90 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ELIASTORK LTD – Cloud Buttons</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: url('background.jpg') no-repeat center center fixed;
-      background-size: cover;
+      padding: 2rem 1rem;
+      background: linear-gradient(to top, #cceeff, #ffffff);
       text-align: center;
-      color: white;
     }
 
-    header, footer {
-      padding: 1.5rem;
-      text-shadow: 0 0 5px black;
+    h1 {
+      color: #003366;
+      text-shadow: 0 1px 2px white;
+      margin-bottom: 0.5rem;
     }
 
-    .cloud-button {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background: linear-gradient(to bottom right, #fff, #e0f7ff);
+    p {
+      color: #003366;
+      margin-top: 0;
+    }
+
+    .cloudy-button {
+      background: url('cloud-shape.png') no-repeat center center;
+      background-size: contain;
+      width: 260px;
+      height: 160px;
+      border: none;
       color: #003366;
       font-weight: bold;
       font-size: 1.1rem;
-      border: none;
       cursor: pointer;
-      border-radius: 50px;
       position: relative;
-      box-shadow:
-        0 8px 12px rgba(0, 0, 0, 0.1),
-        inset 0 0 10px rgba(255, 255, 255, 0.5);
-      transition: all 0.3s ease;
-      margin: 0.5rem;
+      padding: 1rem;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 0 1px 2px white;
+      transition: transform 0.2s ease;
+      margin: 1rem;
+      text-decoration: none;
     }
 
-    .cloud-button::before,
-    .cloud-button::after {
-      content: '';
-      position: absolute;
-      background: inherit;
-      z-index: -1;
-      border-radius: 50%;
+    .cloudy-button:hover {
+      transform: scale(1.05);
     }
 
-    .cloud-button::before {
-      width: 50px;
-      height: 50px;
-      top: -25px;
-      left: 20px;
-    }
-
-    .cloud-button::after {
-      width: 60px;
-      height: 60px;
-      top: -30px;
-      right: 20px;
-    }
-
-    .cloud-button:hover {
-      background: linear-gradient(to bottom right, #f9ffff, #ccefff);
-      transform: translateY(-2px);
-      box-shadow:
-        0 12px 18px rgba(0, 0, 0, 0.15),
-        inset 0 0 14px rgba(255, 255, 255, 0.6);
+    .button-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>ELIASTORK LTD</h1>
-    <p>Engineering & Supply Solutions for Pharma & Industry</p>
-  </header>
+  <h1>ELIASTORK LTD</h1>
+  <p>Engineering & Supply Solutions for Pharma & Industry</p>
 
-  <div>
-    <button class="cloud-button">☁️ About Us</button>
-    <button class="cloud-button">📈 Key Offerings</button>
-    <button class="cloud-button">✪ Why Choose Eliastork?</button>
-    <button class="cloud-button">📢 Contact Us</button>
+  <div class="button-row">
+    <a href="#about" class="cloudy-button">☁️ About Us</a>
+    <a href="#offerings" class="cloudy-button">📈 Key Offerings</a>
+    <a href="#why" class="cloudy-button">✪ Why Choose Eliastork?</a>
+    <a href="#contact" class="cloudy-button">📢 Contact Us</a>
   </div>
-
-  <footer>
-    <p>Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
-  </footer>
 </body>
 </html>
