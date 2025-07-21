@@ -1,24 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="ELIASTORK LTD – Engineering and Supply Solutions for Pharma & Industry."/>
-  <meta name="keywords" content="engineering, supply, pharma, industry, Eliastork"/>
-  <meta property="og:title" content="ELIASTORK LTD – Engineering & Supply Solutions"/>
   <title>ELIASTORK LTD – Engineering & Supply Solutions</title>
   <style>
-    body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f9fafb;color:#0f172a}
-    header,footer{background:#1e3a8a;color:#fff;text-align:center;padding:1.2rem}
-    .language-switcher{display:flex;justify-content:center;gap:.5rem;margin:1rem 0}
-    .language-switcher button{background:none;border:none;font-size:1.5rem;cursor:pointer}
-    .accordion-container{max-width:960px;margin:0 auto}
-    .accordion{width:100%;background:#1e40af;color:#fff;border:none;padding:1rem;text-align:left;font-size:1.1rem;cursor:pointer;margin:.25rem 0}
-    .panel{display:none;padding:0 1rem;background:#e2e8f0}
-    .panel.open{display:block;padding:1rem}
-    .contact-columns{display:flex;flex-wrap:wrap;gap:1rem}
-    .contact-columns div{flex:1 1 250px}
-    .translated-label::before{font-weight:bold;content:attr(data-label);display:block}
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+    header, footer { background: #1e3a8a; color: white; text-align: center; padding: 1rem; }
+    .language-switcher { display: flex; justify-content: center; margin: 1rem; gap: 0.5rem; }
+    .language-switcher button { font-size: 1.5rem; cursor: pointer; border: none; background: none; }
+    .accordion-container { max-width: 800px; margin: auto; }
+    .accordion { width: 100%; background: #334155; color: white; padding: 1rem; border: none; cursor: pointer; margin-top: 0.5rem; }
+    .panel { display: none; background: #e2e8f0; padding: 1rem; }
+    .contact-columns { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .contact-columns div { flex: 1; }
   </style>
 </head>
 <body>
@@ -26,55 +22,133 @@
   <h1>ELIASTORK LTD</h1>
   <p id="slogan">Engineering & Supply Solutions for Pharma & Industry</p>
 </header>
+
 <div class="language-switcher">
-  <button id="btn-en">🇬🇧</button>
-  <button id="btn-ru">🇷🇺</button>
-  <button id="btn-he">🇮🇱</button>
+  <button onclick="setLanguage('en')">🇬🇧</button>
+  <button onclick="setLanguage('ru')">🇷🇺</button>
+  <button onclick="setLanguage('he')">🇮🇱</button>
 </div>
+
 <div class="accordion-container">
-  <button class="accordion" id="acc-about">✨ About Us</button>
-  <div class="panel" id="panel-about"><ul id="about-list"></ul></div>
-  <button class="accordion" id="acc-off">📈 Key Offerings</button>
-  <div class="panel" id="panel-off"><ul id="offerings-list"></ul></div>
-  <button class="accordion" id="acc-why">✪ Why Choose Eliastork?</button>
-  <div class="panel" id="panel-why"><p id="why-text"></p></div>
-  <button class="accordion" id="acc-cont">📢 Contact Us</button>
-  <div class="panel" id="panel-cont">
+  <button class="accordion" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
+  <div class="panel"><ul id="about-list"></ul></div>
+
+  <button class="accordion" onclick="togglePanel(this)">📈 <span id="acc-offer">Key Offerings</span></button>
+  <div class="panel"><ul id="offerings-list"></ul></div>
+
+  <button class="accordion" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
+  <div class="panel"><p id="why-text"></p></div>
+
+  <button class="accordion" onclick="togglePanel(this)">📢 <span id="acc-contact">Contact Us</span></button>
+  <div class="panel">
     <h2 id="contact-title">📢 Contact Us</h2>
     <div class="contact-columns">
       <div>
-        <p class="translated-label" data-label="📍 Address:">Emil Zola 28, Rishon LeZion, 7528251, Israel</p>
-        <p class="translated-label" data-label="📞 Phones:">
-          <a href="https://wa.me/972525444823" target="_blank">+972‑52‑544‑4823 (Maxim Chuchnov)</a><br>
-          <a href="https://wa.me/972527204290" target="_blank">+972‑52‑720‑4290 (Vladimir Pogost)</a>
-        </p>
+        <p><strong id="addr-label">📍 Address:</strong><br>Emil Zola 28, Rishon LeZion, 7528251, Israel</p>
+        <p><strong id="phone-label">📞 Phones:</strong><br>
+        +972-52-5444823 (Maxim Chuchnov)<br>
+        +972-52-7204290 (Vladimir Pogost)</p>
       </div>
       <div>
-        <p class="translated-label" data-label="📧 Emails:">
-          <a href="mailto:maximchuchnov@eliastork.com">maximchuchnov@eliastork.com</a><br>
-          <a href="mailto:vladimirpogost@eliastork.com">vladimirpogost@eliastork.com</a>
-        </p>
+        <p><strong id="email-label">📧 Emails:</strong><br>
+        maximchuchnov@eliastork.com<br>
+        vladimirpogost@eliastork.com</p>
         <p>
-          <span class="translated-label" data-label="🏷 MOD Vendor ID:">11028835</span><br>
-          <span class="translated-label" data-label="🏢 Company Reg. No.:">516415296</span><br>
-          <span class="translated-label" data-label="📊 DUNS Number:">600831505</span>
+          <strong id="mod-label">🏷 MOD Vendor ID:</strong> 11028835<br>
+          <strong id="reg-label">🏢 Company Reg. No.:</strong> 516415296<br>
+          <strong id="duns-label">📊 DUNS Number:</strong> 600831505
         </p>
       </div>
     </div>
   </div>
 </div>
-<footer><p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p></footer>
+
+<footer>
+  <p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
+</footer>
+
 <script>
-const trans={
- en:{aboutUs:"About Us",offer:"Key Offerings",why:"Why Choose Eliastork?",contact:"Contact Us",slogan:"Engineering & Supply Solutions for Pharma & Industry",footer:"Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD",aboutList:["Customized engineering solutions","Full-cycle project management","High-quality, compliant, and reliable service"],offerList:["GMP Pharmaceutical Equipment","CNC & Metalworking Machinery","Packaging & Sorting Systems"],whyText:"Eliastork Ltd. provides advanced, tailor‑made solutions for pharmaceutical and industrial sectors.",labels:{"📍 Address:":"📍 Address:","📞 Phones:":"📞 Phones:","📧 Emails:":"📧 Emails:","🏷 MOD Vendor ID:":"🏷 MOD Vendor ID:","🏢 Company Reg. No.:":"🏢 Company Reg. No.:","📊 DUNS Number:":"📊 DUNS Number:"}},
- ru:{aboutUs:"О нас",offer:"Ключевые направления",why:"Почему ELIASTORK?",contact:"Контакты",slogan:"Инженерные и логистические решения для фармы и промышленности",footer:"Надёжная инженерия. Проверенные решения. © 2025 ELIASTORK LTD",aboutList:["Индивидуальные инженерные решения","Полный цикл управления проектами","Качественный и сертифицированный сервис"],offerList:["Фармацевтическое оборудование GMP","Станки и оборудование для металлообработки","Системы упаковки и сортировки"],whyText:"ELIASTORK предоставляет современные решения, адаптированные под задачи фармацевтики и промышленности.",labels:{"📍 Address:":"📍 Адрес:","📞 Phones:":"📞 Телефоны:","📧 Emails:":"📧 Эл. почта:","🏷 MOD Vendor ID:":"🏷 Идентификатор МО:","🏢 Company Reg. No.:":"🏢 Рег. № компании:","📊 DUNS Number:":"📊 Номер DUNS:"}},
- he:{aboutUs:"עלינו",offer:"הצעות עיקריות",why:"למה לבחור ב־ELIASTORK?",contact:"צור קשר",slogan:"פתרונות הנדסה ולוגיסטיקה לתעשייה ולפארמה",footer:"הנדסה מהימנה. פתרונות אמינים. © 2025 ELIASTORK LTD",aboutList:["פתרונות הנדסיים מותאמים אישית","ניהול פרויקטים מקצה לקצה","שירות איכותי ומוסמך"],offerList:["ציוד פרמצבטי","מכונות עיבוד מתכת","מערכות מיון ואריזה"],whyText:"ELIASTORK מספקת פתרונות מותאמים אישית לתעשייה ולפרמצבטיקה.",labels:{"📍 Address:":"📍 כתובת:","📞 Phones:":"📞 טלפונים:","📧 Emails:":"📧 דוא"ל:","🏷 MOD Vendor ID:":"🏷 מזהה ספק משרד הביטחון:","🏢 Company Reg. No.:":"🏢 מספר חברה:","📊 DUNS Number:":"📊 מספר DUNS:"}}
+const translations = {
+  en: {
+    slogan: "Engineering & Supply Solutions for Pharma & Industry",
+    footer: "Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD",
+    acc_about: "About Us",
+    acc_offer: "Key Offerings",
+    acc_why: "Why Choose Eliastork?",
+    acc_contact: "Contact Us",
+    contact_title: "📢 Contact Us",
+    addr: "📍 Address:",
+    phone: "📞 Phones:",
+    email: "📧 Emails:",
+    mod: "🏷 MOD Vendor ID:",
+    reg: "🏢 Company Reg. No.:",
+    duns: "📊 DUNS Number:",
+    about: [
+      "Customized engineering solutions",
+      "Full-cycle project management",
+      "High-quality, compliant, and reliable service"
+    ],
+    offer: [
+      "GMP Pharmaceutical Equipment",
+      "CNC & Metalworking Machinery",
+      "Packaging & Sorting Systems"
+    ],
+    why: "Eliastork Ltd. provides advanced, tailor-made solutions for pharmaceutical and industrial sectors."
+  },
+  ru: {
+    slogan: "Инженерные и логистические решения для фармы и промышленности",
+    footer: "Надёжная инженерия. Проверенные решения. © 2025 ELIASTORK LTD",
+    acc_about: "О нас",
+    acc_offer: "Ключевые направления",
+    acc_why: "Почему ELIASTORK?",
+    acc_contact: "Контакты",
+    contact_title: "📢 Контакты",
+    addr: "📍 Адрес:",
+    phone: "📞 Телефоны:",
+    email: "📧 Эл. почта:",
+    mod: "🏷 Идентификатор МО:",
+    reg: "🏢 Рег. № компании:",
+    duns: "📊 Номер DUNS:",
+    about: [
+      "Индивидуальные инженерные решения",
+      "Полный цикл управления проектами",
+      "Качественный и сертифицированный сервис"
+    ],
+    offer: [
+      "Фармацевтическое оборудование GMP",
+      "Станки и оборудование для металлообработки",
+      "Системы упаковки и сортировки"
+    ],
+    why: "ELIASTORK предлагает современные решения, адаптированные под задачи фармацевтики и промышленности."
+  }
 };
-function setLang(l){const t=trans[l];document.getElementById('acc-about').textContent='✨ '+t.aboutUs;document.getElementById('acc-off').textContent='📈 '+t.offer;document.getElementById('acc-why').textContent='✪ '+t.why;document.getElementById('acc-cont').textContent='📢 '+t.contact;document.getElementById('contact-title').textContent='📢 '+t.contact;document.getElementById('slogan').textContent=t.slogan;document.getElementById('footer-text').textContent=t.footer;document.getElementById('about-list').innerHTML=t.aboutList.map(i=>`<li>${i}</li>`).join('');document.getElementById('offerings-list').innerHTML=t.offerList.map(i=>`<li>${i}</li>`).join('');document.getElementById('why-text').textContent=t.whyText;document.querySelectorAll('.translated-label').forEach(el=>{const orig=el.getAttribute('data-label');el.setAttribute('data-label',t.labels[orig]||orig);});}
-['btn-en','btn-ru','btn-he'].forEach(id=>document.getElementById(id).addEventListener('click',e=>setLang(id.split('-')[1])));
-setLang('en');
-// accordion toggle
-document.querySelectorAll('.accordion').forEach(btn=>btn.addEventListener('click',()=>{const p=btn.nextElementSibling;p.classList.toggle('open');}));
+
+function setLanguage(lang) {
+  const t = translations[lang];
+  document.getElementById("slogan").textContent = t.slogan;
+  document.getElementById("footer-text").textContent = t.footer;
+  document.getElementById("acc-about").textContent = t.acc_about;
+  document.getElementById("acc-offer").textContent = t.acc_offer;
+  document.getElementById("acc-why").textContent = t.acc_why;
+  document.getElementById("acc-contact").textContent = t.acc_contact;
+  document.getElementById("contact-title").textContent = t.contact_title;
+  document.getElementById("addr-label").textContent = t.addr;
+  document.getElementById("phone-label").textContent = t.phone;
+  document.getElementById("email-label").textContent = t.email;
+  document.getElementById("mod-label").textContent = t.mod;
+  document.getElementById("reg-label").textContent = t.reg;
+  document.getElementById("duns-label").textContent = t.duns;
+  document.getElementById("about-list").innerHTML = t.about.map(i => `<li>${i}</li>`).join('');
+  document.getElementById("offerings-list").innerHTML = t.offer.map(i => `<li>${i}</li>`).join('');
+  document.getElementById("why-text").textContent = t.why;
+}
+
+function togglePanel(btn) {
+  const panel = btn.nextElementSibling;
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+}
+
+setLanguage("en");
 </script>
 </body>
 </html>
