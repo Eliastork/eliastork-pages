@@ -31,15 +31,15 @@
     </div>
 
     <div class="accordion-container">
-      <button class="accordion">✨ About Us</button>
+      <button class="accordion" id="accordion-about">✨ About Us</button>
       <div class="panel">
         <ul class="about-list"></ul>
       </div>
-      <button class="accordion">📈 Key Offerings</button>
+      <button class="accordion" id="accordion-offerings">📈 Key Offerings</button>
       <div class="panel">
         <ul class="offerings-list"></ul>
       </div>
-      <button class="accordion">✪ Why Choose Eliastork?</button>
+      <button class="accordion" id="accordion-why">✪ Why Choose Eliastork?</button>
       <div class="panel">
         <p class="why-text-placeholder"></p>
         <div style="text-align: center; margin-top: 1rem;">
@@ -50,7 +50,7 @@
         </div>
       </div>
 
-      <button class="accordion">📢 Contact Us</button>
+      <button class="accordion" id="accordion-contact">📢 Contact Us</button>
       <div class="panel contact">
         <h2 class="contact-title">📢 Contact Us</h2>
         <div class="contact-columns">
@@ -165,24 +165,16 @@
     });
 
     function setLanguage(lang) {
-      const acc = document.querySelectorAll('.accordion');
       document.documentElement.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
-      if (acc.length >= 4) {
-        acc[0].textContent = "✨ " + translations[lang].aboutUs;
-        acc[1].textContent = "📈 " + translations[lang].offerings;
-        acc[2].textContent = "✪ " + translations[lang].whyChoose;
-        acc[3].textContent = "📢 " + translations[lang].contactTitle;
-      }
-      const contactTitle = document.querySelector('.contact-title');
-      if (contactTitle) contactTitle.textContent = "📢 " + translations[lang].contactTitle;
+      document.getElementById('accordion-about').textContent = "✨ " + translations[lang].aboutUs;
+      document.getElementById('accordion-offerings').textContent = "📈 " + translations[lang].offerings;
+      document.getElementById('accordion-why').textContent = "✪ " + translations[lang].whyChoose;
+      document.getElementById('accordion-contact').textContent = "📢 " + translations[lang].contactTitle;
+      document.querySelector('.contact-title').textContent = "📢 " + translations[lang].contactTitle;
       document.querySelector('.footer-text').textContent = translations[lang].footer;
-
-      const panels = document.querySelectorAll('.panel');
-      if (panels.length >= 3) {
-        panels[0].querySelector('ul').innerHTML = translations[lang].aboutList.map(item => `<li>${item}</li>`).join('');
-        panels[1].querySelector('ul').innerHTML = translations[lang].offeringsList.map(item => `<li>${item}</li>`).join('');
-        panels[2].querySelector('.why-text-placeholder').textContent = translations[lang].whyText;
-      }
+      document.querySelector('.about-list').innerHTML = translations[lang].aboutList.map(item => `<li>${item}</li>`).join('');
+      document.querySelector('.offerings-list').innerHTML = translations[lang].offeringsList.map(item => `<li>${item}</li>`).join('');
+      document.querySelector('.why-text-placeholder').textContent = translations[lang].whyText;
     }
   </script>
 </body>
