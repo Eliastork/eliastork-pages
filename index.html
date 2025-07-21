@@ -174,10 +174,20 @@
 </footer>
 
 <script>
+
 function togglePanel(btn) {
+  // Закрыть все панели
+  document.querySelectorAll('.panel').forEach(panel => {
+    if (panel !== btn.nextElementSibling) {
+      panel.classList.remove('show');
+    }
+  });
+
+  // Переключить выбранную панель
   const panel = btn.nextElementSibling;
   panel.classList.toggle("show");
 }
+
 
 
 const translations = {
