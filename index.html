@@ -140,6 +140,10 @@
   <button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
   <div class="panel"><p id="why-text"></p></div>
 
+  
+  <button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services">Service & Engineering</span></button>
+  <div class="panel"><ul id="services-list"></ul></div>
+
   <button class="cloud-button" onclick="togglePanel(this)">📢 <span id="acc-contact">Contact Us</span></button>
   <div class="panel">
     <h2 id="contact-title">📢 Contact Us</h2>
@@ -170,6 +174,7 @@ function togglePanel(btn) {
   panel.classList.toggle("show");
 }
 
+
 const translations = {
   en: {
     about: [
@@ -188,7 +193,15 @@ const translations = {
     reg: "516415296",
     duns: "600831505",
     contact: "📢 Contact Us",
-    footer: "Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD"
+    footer: "Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD",
+    services: [
+      "Installation and commissioning of industrial equipment",
+      "Development of CNC machining programs",
+      "Engineering calculations and technical documentation",
+      "On-site setup and operational training",
+      "Integration into existing production systems",
+      "Technical support and maintenance services"
+    ]
   },
   ru: {
     about: [
@@ -207,7 +220,15 @@ const translations = {
     reg: "516415296",
     duns: "600831505",
     contact: "📢 Связаться с нами",
-    footer: "Инженерные решения. Надежные поставки. © 2025 ELIASTORK LTD"
+    footer: "Инженерные решения. Надежные поставки. © 2025 ELIASTORK LTD",
+    services: [
+      "Монтаж и установка промышленного оборудования",
+      "Разработка управляющих программ для станков с ЧПУ",
+      "Инженерные расчёты и проектная документация",
+      "Пусконаладочные работы и технический инструктаж",
+      "Интеграция в существующие производственные процессы",
+      "Техническая поддержка и сервисное обслуживание"
+    ]
   },
   he: {
     about: [
@@ -226,9 +247,18 @@ const translations = {
     reg: "516415296",
     duns: "600831505",
     contact: "📢 צור קשר",
-    footer: "הנדסה אמינה. פתרונות אמינים. © 2025 ELIASTORK LTD"
+    footer: "הנדסה אמינה. פתרונות אמינים. © 2025 ELIASTORK LTD",
+    services: [
+      "התקנה והפעלה של ציוד תעשייתי",
+      "פיתוח תוכנות לעיבוד CNC",
+      "חישובים הנדסיים והפקת מסמכים טכניים",
+      "הדרכה ותפעול באתר",
+      "שילוב במערכות ייצור קיימות",
+      "שירות ותחזוקה טכנית"
+    ]
   }
 };
+
 
 function setLanguage(lang) {
   const t = translations[lang];
@@ -263,6 +293,14 @@ function setLanguage(lang) {
   document.getElementById('acc-contact').textContent = t.contact;
   document.getElementById('contact-title').textContent = t.contact;
   document.getElementById('footer-text').textContent = t.footer;
+  const servicesList = document.getElementById('services-list');
+  servicesList.innerHTML = '';
+  t.services.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    servicesList.appendChild(li);
+  });
+
 
   document.body.setAttribute("dir", lang === 'he' ? 'rtl' : 'ltr');
 }
