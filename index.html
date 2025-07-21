@@ -2,7 +2,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8"/>diff --git a/index.html b/index.html
+index 2a06cbd5aaec7f5cca408959555d453d28e0a5bf..d71b96df9dadd272b287fa5b47726914ee55e6f8 100644
+--- a/index.html
++++ b/index.html
+@@ -124,51 +124,51 @@ const translations = {
+   he: {
+     slogan: "פתרונות הנדסיים ואספקה לפארמה ותעשייה",
+     footer: "הנדסה אמינה. פתרונות מוכחים. © 2025 ELIASTORK LTD",
+     acc_about: "על החברה",
+     acc_offer: "תחומי פעילות",
+     acc_why: "למה ELIASTORK?",
+     acc_contact: "צור קשר",
+     contact_title: "📢 צור קשר",
+     addr: "📍 כתובת:",
+     phone: "📞 טלפונים:",
+     email: "📧 אימיילים:",
+     mod: "🏷 מספר ספק MOD:",
+     reg: "🏢 מס' רישום חברה:",
+     duns: "📊 מספר DUNS:",
+     about: [
+       "פתרונות הנדסה מותאמים אישית",
+       "ניהול פרויקט מלא לסוף",
+       "שירות איכותי ומוסמך"
+     ],
+     offer: [
+       "ציוד תרופתי GMP",
+       "מכונות וציוד לעיבוד מתכות",
+       "מערכות אריזה ומיון"
+     ],
+     why: "ELIASTORK מספקת פתרונות מתקדמים מותאמים למגזרי הפרמצה והתעשייה."
+-  },
++  }
+ };
+ 
+ function setLanguage(lang) {
+   const t = translations[lang];
+   document.getElementById("slogan").textContent = t.slogan;
+   document.getElementById("footer-text").textContent = t.footer;
+   document.getElementById("acc-about").textContent = t.acc_about;
+   document.getElementById("acc-offer").textContent = t.acc_offer;
+   document.getElementById("acc-why").textContent = t.acc_why;
+   document.getElementById("acc-contact").textContent = t.acc_contact;
+   document.getElementById("contact-title").textContent = t.contact_title;
+   document.getElementById("addr-label").textContent = t.addr;
+   document.getElementById("phone-label").textContent = t.phone;
+   document.getElementById("email-label").textContent = t.email;
+   document.getElementById("mod-label").textContent = t.mod;
+   document.getElementById("reg-label").textContent = t.reg;
+   document.getElementById("duns-label").textContent = t.duns;
+   document.getElementById("about-list").innerHTML = t.about.map(i => `<li>${i}</li>`).join('');
+   document.getElementById("offerings-list").innerHTML = t.offer.map(i => `<li>${i}</li>`).join('');
+   document.getElementById("why-text").textContent = t.why;
+ }
+ 
+ function togglePanel(btn) {
+   const panel = btn.nextElementSibling;
+   panel.style.display = panel.style.display === "block" ? "none" : "block";
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ELIASTORK LTD – Engineering & Supply Solutions</title>
   <style>
