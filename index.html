@@ -13,21 +13,23 @@
   <meta property="og:image" content="https://eliastork.com/logo.png"/>
   <meta property="og:locale" content="en_US"/>
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-  <link rel="stylesheet" href="styles.css"/>
   <title>ELIASTORK LTD – Engineering & Supply Solutions</title>
+  <style>
+    .translated-label::before { font-weight: bold; content: attr(data-label); display: block; }
+  </style>
 </head>
 <body>
   <header>
     <a href="/" style="text-decoration:none; color:inherit;">
       <h1>ELIASTORK LTD</h1>
     </a>
-    <p>Engineering & Supply Solutions for Pharma & Industry</p>
+    <p class="translated" data-label="slogan">Engineering & Supply Solutions for Pharma & Industry</p>
   </header>
   <main>
     <div class="language-switcher" role="navigation" aria-label="Language selector">
-      <button onclick="setLanguage('en')" title="English" aria-label="Switch to English">🇬🇧</button>
-      <button onclick="setLanguage('ru')" title="Русский" aria-label="Переключиться на русский">🇷🇺</button>
-      <button onclick="setLanguage('he')" title="עברית" aria-label="החלף לעברית">🇮🇱</button>
+      <button onclick="setLanguage('en')">🇬🇧</button>
+      <button onclick="setLanguage('ru')">🇷🇺</button>
+      <button onclick="setLanguage('he')">🇮🇱</button>
     </div>
 
     <div class="accordion-container">
@@ -43,9 +45,8 @@
       <div class="panel">
         <p class="why-text-placeholder"></p>
         <div style="text-align: center; margin-top: 1rem;">
-          <video autoplay controls loop muted loading="lazy" style="width: 100%; max-width: 480px; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.2);" aria-label="Corporate presentation video">
+          <video autoplay controls loop muted loading="lazy" style="width: 100%; max-width: 480px; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.2);">
             <source src="ELIASTORK_video_subtitles_debussy.mp4" type="video/mp4"/>
-            Your browser does not support the video tag.
           </video>
         </div>
       </div>
@@ -55,20 +56,21 @@
         <h2 class="contact-title">📢 Contact Us</h2>
         <div class="contact-columns">
           <div>
-            <p><strong>📍 Address:</strong><br/>Emil Zola 28, Rishon LeZion, 7528251, Israel</p>
-            <p><strong>📞 Phones:</strong><br/>
+            <p class="translated-label" data-label="📍 Address:">Emil Zola 28, Rishon LeZion, 7528251, Israel</p>
+            <p class="translated-label" data-label="📞 Phones:">
               <a href="https://wa.me/972525444823" target="_blank">+972-52-5444823 (Maxim Chuchnov)</a><br/>
               <a href="https://wa.me/972527204290" target="_blank">+972-52-7204290 (Vladimir Pogost)</a>
             </p>
           </div>
           <div>
-            <p><strong>📧 Emails:</strong><br/>
+            <p class="translated-label" data-label="📧 Emails:">
               <a href="mailto:maximchuchnov@eliastork.com">maximchuchnov@eliastork.com</a><br/>
               <a href="mailto:vladimirpogost@eliastork.com">vladimirpogost@eliastork.com</a>
             </p>
-            <p><strong>🏷 MOD Vendor ID:</strong> 11028835<br/>
-              <strong>🏢 Company Reg. No.:</strong> 516415296<br/>
-              <strong>📊 DUNS Number:</strong> 600831505
+            <p>
+              <span class="translated-label" data-label="🏷 MOD Vendor ID:">11028835</span><br/>
+              <span class="translated-label" data-label="🏢 Company Reg. No.:">516415296</span><br/>
+              <span class="translated-label" data-label="📊 DUNS Number:">600831505</span>
             </p>
           </div>
         </div>
@@ -87,23 +89,15 @@
         whyChoose: "Why Choose Eliastork?",
         contactTitle: "Contact Us",
         footer: "Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD",
-        aboutList: [
-          "Customized engineering solutions",
-          "Full-cycle project management",
-          "High-quality, compliant, and reliable service"
-        ],
-        offeringsList: [
-          "GMP Pharmaceutical Equipment: Mixing, granulation, tableting, packaging",
-          "CNC & Metalworking Machinery: Lathes, lasers, guillotines, accessories",
-          "Packaging & Sorting Systems",
-          "Temperature & Climate Test Chambers",
-          "Industrial Raw Materials & Metals",
-          "Auxiliary Equipment for Production & Storage",
-          "Water Distribution Systems: Pumps, valves, controls",
-          "Electrical Equipment for Industry",
-          "Modernization & Spare Parts Supply"
-        ],
-        whyText: "Eliastork Ltd. provides advanced, tailor-made solutions for pharmaceutical and industrial sectors. Our team combines engineering expertise, flexible logistics, and end-to-end project execution to deliver quality and compliance."
+        slogan: "Engineering & Supply Solutions for Pharma & Industry",
+        labels: {
+          "📍 Address:": "📍 Address:",
+          "📞 Phones:": "📞 Phones:",
+          "📧 Emails:": "📧 Emails:",
+          "🏷 MOD Vendor ID:": "🏷 MOD Vendor ID:",
+          "🏢 Company Reg. No.:": "🏢 Company Reg. No.:",
+          "📊 DUNS Number:": "📊 DUNS Number:"
+        }
       },
       ru: {
         aboutUs: "О нас",
@@ -111,23 +105,15 @@
         whyChoose: "Почему ELIASTORK?",
         contactTitle: "Контакты",
         footer: "Надёжная инженерия. Проверенные решения. © 2025 ELIASTORK LTD",
-        aboutList: [
-          "Индивидуальные инженерные решения",
-          "Полный цикл управления проектами",
-          "Качественный, сертифицированный и надёжный сервис"
-        ],
-        offeringsList: [
-          "Фармацевтическое оборудование GMP: смесители, грануляторы, таблет-прессы, упаковка",
-          "Станки и оборудование для металлообработки: токарные, лазерные, гильотины, оснастка",
-          "Системы упаковки и сортировки",
-          "Температурные и климатические камеры",
-          "Промышленные материалы и металлы",
-          "Вспомогательное оборудование для производства и складов",
-          "Системы водоснабжения: насосы, клапаны, контроллеры",
-          "Электрооборудование для промышленности",
-          "Модернизация и поставка запчастей"
-        ],
-        whyText: "Компания ELIASTORK предлагает современные решения, адаптированные под задачи фармацевтики и промышленности. Мы объединяем инженерную экспертизу, гибкую логистику и полное сопровождение проекта для достижения качества и соответствия."
+        slogan: "Инженерные и логистические решения для фармы и промышленности",
+        labels: {
+          "📍 Address:": "📍 Адрес:",
+          "📞 Phones:": "📞 Телефоны:",
+          "📧 Emails:": "📧 Эл. почта:",
+          "🏷 MOD Vendor ID:": "🏷 Идентификатор МО:",
+          "🏢 Company Reg. No.:": "🏢 Рег. № компании:",
+          "📊 DUNS Number:": "📊 Номер DUNS:"
+        }
       },
       he: {
         aboutUs: "עלינו",
@@ -135,47 +121,40 @@
         whyChoose: "למה לבחור ב־ELIASTORK?",
         contactTitle: "צור קשר",
         footer: "הנדסה מהימנה. פתרונות אמינים. © 2025 ELIASTORK LTD",
-        aboutList: [
-          "פתרונות הנדסיים מותאמים אישית",
-          "ניהול פרויקטים מקצה לקצה",
-          "שירות איכותי, מוסמך ואמין"
-        ],
-        offeringsList: [
-          "ציוד פרמצבטי לפי GMP: ערבוב, גרנולציה, דחיסה, אריזה",
-          "מכונות עיבוד מתכת: מחרטות, לייזרים, גליוטינות, אביזרים",
-          "מערכות מיון ואריזה",
-          "תאי בדיקת טמפרטורה ואקלים",
-          "חומרי גלם ומתכות תעשייתיים",
-          "ציוד עזר לייצור ואחסון",
-          "מערכות מים: משאבות, שסתומים, בקרה",
-          "ציוד חשמלי לתעשייה",
-          "שדרוגים ואספקת חלקי חילוף"
-        ],
-        whyText: "ELIASTORK מספקת פתרונות מותאמים אישית לתעשייה ולפרמצבטיקה. צוות המומחים שלנו משלב הנדסה, לוגיסטיקה וגישה כוללת להבטחת איכות ועמידה בדרישות."
+        slogan: "פתרונות הנדסה ולוגיסטיקה לתעשייה ולפארמה",
+        labels: {
+          "📍 Address:": "📍 כתובת:",
+          "📞 Phones:": "📞 טלפונים:",
+          "📧 Emails:": "📧 דוא"ל:",
+          "🏷 MOD Vendor ID:": "🏷 מזהה ספק משרד הביטחון:",
+          "🏢 Company Reg. No.:": "🏢 מספר עוסק רשום:",
+          "📊 DUNS Number:": "📊 מספר DUNS:"
+        }
       }
     };
 
-    window.addEventListener('DOMContentLoaded', () => {
-      const userLang = navigator.language.slice(0, 2).toLowerCase();
-      if (['en', 'ru', 'he'].includes(userLang)) {
-        setLanguage(userLang);
-      } else {
-        setLanguage('en');
-      }
-    });
-
     function setLanguage(lang) {
       document.documentElement.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
-      document.getElementById('accordion-about').textContent = "✨ " + translations[lang].aboutUs;
-      document.getElementById('accordion-offerings').textContent = "📈 " + translations[lang].offerings;
-      document.getElementById('accordion-why').textContent = "✪ " + translations[lang].whyChoose;
-      document.getElementById('accordion-contact').textContent = "📢 " + translations[lang].contactTitle;
-      document.querySelector('.contact-title').textContent = "📢 " + translations[lang].contactTitle;
+      document.getElementById('accordion-about').textContent = '✨ ' + translations[lang].aboutUs;
+      document.getElementById('accordion-offerings').textContent = '📈 ' + translations[lang].offerings;
+      document.getElementById('accordion-why').textContent = '✪ ' + translations[lang].whyChoose;
+      document.getElementById('accordion-contact').textContent = '📢 ' + translations[lang].contactTitle;
+      document.querySelector('.contact-title').textContent = '📢 ' + translations[lang].contactTitle;
       document.querySelector('.footer-text').textContent = translations[lang].footer;
-      document.querySelector('.about-list').innerHTML = translations[lang].aboutList.map(item => `<li>${item}</li>`).join('');
-      document.querySelector('.offerings-list').innerHTML = translations[lang].offeringsList.map(item => `<li>${item}</li>`).join('');
-      document.querySelector('.why-text-placeholder').textContent = translations[lang].whyText;
+      document.querySelector('[data-label="slogan"]').textContent = translations[lang].slogan;
+
+      // Переводим подписи
+      document.querySelectorAll('.translated-label').forEach(el => {
+        const originalLabel = el.getAttribute('data-label');
+        const translated = translations[lang].labels[originalLabel];
+        if (translated) el.setAttribute('data-label', translated);
+      });
     }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const userLang = navigator.language.slice(0, 2).toLowerCase();
+      setLanguage(['en', 'ru', 'he'].includes(userLang) ? userLang : 'en');
+    });
   </script>
 </body>
 </html>
