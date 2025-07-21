@@ -78,6 +78,105 @@
   <footer>
     <p class="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
   </footer>
-  <script src="main.js"></script>
+  <script>
+    const translations = {
+      en: {
+        aboutUs: "About Us",
+        offerings: "Key Offerings",
+        whyChoose: "Why Choose Eliastork?",
+        contactTitle: "Contact Us",
+        footer: "Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD",
+        aboutList: [
+          "Customized engineering solutions",
+          "Full-cycle project management",
+          "High-quality, compliant, and reliable service"
+        ],
+        offeringsList: [
+          "GMP Pharmaceutical Equipment: Mixing, granulation, tableting, packaging",
+          "CNC & Metalworking Machinery: Lathes, lasers, guillotines, accessories",
+          "Packaging & Sorting Systems",
+          "Temperature & Climate Test Chambers",
+          "Industrial Raw Materials & Metals",
+          "Auxiliary Equipment for Production & Storage",
+          "Water Distribution Systems: Pumps, valves, controls",
+          "Electrical Equipment for Industry",
+          "Modernization & Spare Parts Supply"
+        ],
+        whyText: "Eliastork Ltd. provides advanced, tailor-made solutions for pharmaceutical and industrial sectors. Our team combines engineering expertise, flexible logistics, and end-to-end project execution to deliver quality and compliance."
+      },
+      ru: {
+        aboutUs: "О нас",
+        offerings: "Ключевые направления",
+        whyChoose: "Почему ELIASTORK?",
+        contactTitle: "Контакты",
+        footer: "Надёжная инженерия. Проверенные решения. © 2025 ELIASTORK LTD",
+        aboutList: [
+          "Индивидуальные инженерные решения",
+          "Полный цикл управления проектами",
+          "Качественный, сертифицированный и надёжный сервис"
+        ],
+        offeringsList: [
+          "Фармацевтическое оборудование GMP: смесители, грануляторы, таблет-прессы, упаковка",
+          "Станки и оборудование для металлообработки: токарные, лазерные, гильотины, оснастка",
+          "Системы упаковки и сортировки",
+          "Температурные и климатические камеры",
+          "Промышленные материалы и металлы",
+          "Вспомогательное оборудование для производства и складов",
+          "Системы водоснабжения: насосы, клапаны, контроллеры",
+          "Электрооборудование для промышленности",
+          "Модернизация и поставка запчастей"
+        ],
+        whyText: "Компания ELIASTORK предлагает современные решения, адаптированные под задачи фармацевтики и промышленности. Мы объединяем инженерную экспертизу, гибкую логистику и полное сопровождение проекта для достижения качества и соответствия."
+      },
+      he: {
+        aboutUs: "עלינו",
+        offerings: "הצעות עיקריות",
+        whyChoose: "למה לבחור ב־ELIASTORK?",
+        contactTitle: "צור קשר",
+        footer: "הנדסה מהימנה. פתרונות אמינים. © 2025 ELIASTORK LTD",
+        aboutList: [
+          "פתרונות הנדסיים מותאמים אישית",
+          "ניהול פרויקטים מקצה לקצה",
+          "שירות איכותי, מוסמך ואמין"
+        ],
+        offeringsList: [
+          "ציוד פרמצבטי לפי GMP: ערבוב, גרנולציה, דחיסה, אריזה",
+          "מכונות עיבוד מתכת: מחרטות, לייזרים, גליוטינות, אביזרים",
+          "מערכות מיון ואריזה",
+          "תאי בדיקת טמפרטורה ואקלים",
+          "חומרי גלם ומתכות תעשייתיים",
+          "ציוד עזר לייצור ואחסון",
+          "מערכות מים: משאבות, שסתומים, בקרה",
+          "ציוד חשמלי לתעשייה",
+          "שדרוגים ואספקת חלקי חילוף"
+        ],
+        whyText: "ELIASTORK מספקת פתרונות מותאמים אישית לתעשייה ולפרמצבטיקה. צוות המומחים שלנו משלב הנדסה, לוגיסטיקה וגישה כוללת להבטחת איכות ועמידה בדרישות."
+      }
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const userLang = navigator.language.slice(0, 2).toLowerCase();
+      if (['en', 'ru', 'he'].includes(userLang)) {
+        setLanguage(userLang);
+      } else {
+        setLanguage('en');
+      }
+    });
+
+    function setLanguage(lang) {
+      document.documentElement.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+      document.querySelector('.accordion:nth-of-type(1)').textContent = "✨ " + translations[lang].aboutUs;
+      document.querySelector('.accordion:nth-of-type(2)').textContent = "📈 " + translations[lang].offerings;
+      document.querySelector('.accordion:nth-of-type(3)').textContent = "✪ " + translations[lang].whyChoose;
+      document.querySelector('.contact-toggle').textContent = "📢 " + translations[lang].contactTitle;
+      document.querySelector('.contact-title').textContent = "📢 " + translations[lang].contactTitle;
+      document.querySelector('.footer-text').textContent = translations[lang].footer;
+
+      const [aboutPanel, offeringsPanel, whyPanel] = document.querySelectorAll('.panel');
+      aboutPanel.querySelector('.about-list').innerHTML = translations[lang].aboutList.map(item => `<li>${item}</li>`).join('');
+      offeringsPanel.querySelector('.offerings-list').innerHTML = translations[lang].offeringsList.map(item => `<li>${item}</li>`).join('');
+      whyPanel.querySelector('.why-text-placeholder').textContent = translations[lang].whyText;
+    }
+  </script>
 </body>
 </html>
