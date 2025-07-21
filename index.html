@@ -5,57 +5,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ELIASTORK LTD – Engineering & Supply Solutions</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
-    header, footer { background: #1e3a8a; color: white; text-align: center; padding: 1rem; }
-    .language-switcher { display: flex; justify-content: center; margin: 1rem; gap: 0.5rem; }
-    .language-switcher button { font-size: 1.5rem; cursor: pointer; border: none; background: none; }
-    .accordion-container { max-width: 800px; margin: auto; }
-    .accordion { width: 100%; background: #334155; color: white; padding: 1rem; border: none; cursor: pointer; margin-top: 0.5rem; }
-    .panel { display: none; background: #e2e8f0; padding: 1rem; }
-    .contact-columns { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .contact-columns div { flex: 1; }
-  
-    .cloudy-button {
+    /* ---------- GLOBAL ---------- */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    body[dir="rtl"] { text-align: right; }
+    body[dir="ltr"] { text-align: left; }
+
+    header, footer {
+      background: none;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      text-shadow: 0 0 6px black;
+    }
+
+    /* ---------- LANGUAGE SWITCHER ---------- */
+    .language-switcher {
+      display: flex;
+      justify-content: center;
+      margin: 1rem;
+      gap: 0.5rem;
+    }
+    .language-switcher button {
+      font-size: 1.5rem;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* ---------- CLOUD BUTTONS ---------- */
+    .cloud-button {
       background: url('cloud-original-transparent.png') no-repeat center center;
       background-size: contain;
-      width: 280px;
-      height: 160px;
+      width: 100%;          /* full width of container */
+      max-width: 600px;     /* cap on very wide screens */
+      height: 120px;        /* base height; text stays inside */
       border: none;
-      color: #003366;
-      font-weight: bold;
-      font-size: 1.1rem;
+      color: white;
+      font-size: 1.5rem;
       cursor: pointer;
-      position: relative;
-      padding: 1rem;
+      margin: 1rem auto;
       display: flex;
+      justify-content: center;
       align-items: center;
-      justify-content: center;
-      text-shadow: 0 1px 2px white;
-      transition: transform 0.2s ease;
-      margin: 0.75rem;
-      text-decoration: none;
+      text-shadow: 0 0 6px black;
+      transition: transform 0.3s ease;
+    }
+    .cloud-button:hover {
+      transform: scale(1.05); /* subtle pop */
     }
 
-    .cloudy-button:hover {
-      transform: scale(1.05);
+    /* ---------- ACCORDION CONTAINER & PANELS ---------- */
+    .accordion-container {
+      max-width: 800px;
+      margin: auto;
+    }
+    .panel {
+      display: none;
+      background-color: rgba(226, 232, 240, 0.85);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 12px;
     }
 
-    .button-container {
+    /* ---------- CONTACT COLUMNS ---------- */
+    .contact-columns {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
       gap: 1rem;
-      padding-bottom: 2rem;
     }
-
-    @media (max-width: 600px) {
-      .cloudy-button {
-        width: 90%;
-        height: 140px;
-        font-size: 1rem;
-      }
+    .contact-columns div {
+      flex: 1;
     }
-
   </style>
 </head>
 <body>
@@ -64,31 +90,25 @@
   <p id="slogan">Engineering & Supply Solutions for Pharma & Industry</p>
 </header>
 
+<!-- Language Switcher -->
 <div class="language-switcher">
   <button onclick="setLanguage('en')">🇬🇧</button>
   <button onclick="setLanguage('ru')">🇷🇺</button>
   <button onclick="setLanguage('he')">🇮🇱</button>
 </div>
 
-<div class="button-container">
-  <a href="#about" class="cloudy-button" id="acc-about">☁️ About Us</a>
-  <a href="#offerings" class="cloudy-button" id="acc-offer">📈 Key Offerings</a>
-  <a href="#why" class="cloudy-button" id="acc-why">✪ Why Choose Eliastork?</a>
-  <a href="#contact" class="cloudy-button" id="acc-contact">📢 Contact Us</a>
-</div>
-
-
+<!-- Cloud Accordions -->
 <div class="accordion-container">
-  <button class="accordion" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
+  <button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
   <div class="panel"><ul id="about-list"></ul></div>
 
-  <button class="accordion" onclick="togglePanel(this)">📈 <span id="acc-offer">Key Offerings</span></button>
+  <button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer">Key Offerings</span></button>
   <div class="panel"><ul id="offerings-list"></ul></div>
 
-  <button class="accordion" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
+  <button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
   <div class="panel"><p id="why-text"></p></div>
 
-  <button class="accordion" onclick="togglePanel(this)">📢 <span id="acc-contact">Contact Us</span></button>
+  <button class="cloud-button" onclick="togglePanel(this)">📢 <span id="acc-contact">Contact Us</span></button>
   <div class="panel">
     <h2 id="contact-title">📢 Contact Us</h2>
     <div class="contact-columns">
@@ -217,6 +237,7 @@ const translations = {
 };
 
 function setLanguage(lang) {
+  document.body.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
   const t = translations[lang];
   document.getElementById("slogan").textContent = t.slogan;
   document.getElementById("footer-text").textContent = t.footer;
@@ -247,6 +268,7 @@ function togglePanel(btn) {
   panel.style.display = panel.style.display === "block" ? "none" : "block";
 }
 
+// Init with English
 setLanguage("en");
 </script>
 </body>
