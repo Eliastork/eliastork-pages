@@ -306,6 +306,8 @@ function setLanguage(lang) {
 
   document.body.setAttribute("dir", lang === 'he' ? 'rtl' : 'ltr');
 }
+
+window.addEventListener('DOMContentLoaded', () => setLanguage('en'));
 </script>
 </body>
 </html>
