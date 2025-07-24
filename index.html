@@ -178,16 +178,56 @@
     <p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
   </footer>
 
-  <script>
-    function togglePanel(btn) {
-      document.querySelectorAll('.panel').forEach(panel => {
-        if (panel !== btn.nextElementSibling) {
-          panel.classList.remove('show');
-        }
-      });
-      const panel = btn.nextElementSibling;
-      panel.classList.toggle("show");
+<script>
+  const translations = {
+    en: {
+      about: [
+        "We are an engineering and supply company with expertise in pharma and industry.",
+        "Based in Israel, serving clients worldwide."
+      ],
+      offerings: [
+        "Custom equipment sourcing and engineering support.",
+        "Global logistics and MOD-certified procurement."
+      ],
+      why: "Clients choose us for quality, transparency, and reliability.",
+      address: "Emil Zola 28, Rishon LeZion, 7528251, Israel",
+      phones: "+972-52-5444823 / +972-52-7204290",
+      emails: "maximchuchnov@eliastork.com / vladimirpogost@eliastork.com",
+      mod: "11028835",
+      reg: "516415296",
+      duns: "600831505",
+      contact: "📢 Contact Us",
+      footer: "Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD",
+      services: [
+        "Installation and commissioning of industrial equipment",
+        "Development of CNC machining programs",
+        /* …остальные пункты… */
+      ]
+    },
+    ru: {
+      about: [
+        "Мы — инженерно-снабженческая компания с опытом в фармацевтике и промышленности.",
+        "Находимся в Израиле, работаем по всему миру."
+      ],
+      /* …аналогично для остальных ключей… */
+    },
+    he: {
+      about: [
+        "חברת הנדסה ואספקה עם מומחיות בפרמצבטיקה ותעשייה.",
+        "ממוקמים בישראל, מספקים שירותים עולמיים."
+      ],
+      /* …далее… */
     }
+  };
+
+  function setLanguage(lang) {
+    const t = translations[lang];
+    // …остальной код заполнения элементов…
+  }
+
+  window.addEventListener('DOMContentLoaded', () => setLanguage('en'));
+</script>
+
 
     window.addEventListener('DOMContentLoaded', () => setLanguage('en'));
   </script>
