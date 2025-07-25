@@ -36,7 +36,7 @@
     }
 
     .cloud-button {
-      background: url('cloud-button-transparent.png') no-repeat center center;
+      background: url('cloud-button-bluegray.png') no-repeat center center;
       background-size: contain;
       background-color: transparent;
       width: 75%;
@@ -58,8 +58,8 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
     .cloud-button span {
-      color: #D8E6F3;
-      text-shadow: 0 0 15px rgba(0, 128, 255, 0.9);
+      color: #D8E6F3 !important;
+      text-shadow: 0 0 15px rgba(0, 128, 255, 0.9) !important;
     }
 
     @keyframes float {
@@ -114,8 +114,8 @@
         font-size: 1.2rem;
       }
       .cloud-button span {
-        color: #B0C4DE;
-        text-shadow: 0 0 10px rgba(100, 149, 237, 0);
+        color: #B0C4DE !important;
+        text-shadow: 0 0 10px rgba(100, 149, 237, 0.8) !important;
       }
       .panel {
         padding: 0.75rem;
@@ -131,27 +131,21 @@
     <h1>ELIASTORK LTD</h1>
     <p id="slogan">Engineering & Supply Solutions for Pharma & Industry</p>
   </header>
-
   <div class="right-column">
     <div class="language-switcher">
       <button onclick="setLanguage('en')">🇬🇧</button>
       <button onclick="setLanguage('ru')">🇷🇺</button>
       <button onclick="setLanguage('he')">🇮🇱</button>
     </div>
-
     <div class="accordion-container">
       <button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
       <div class="panel"><ul id="about-list"></ul></div>
-
       <button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer">Key Offerings</span></button>
       <div class="panel"><ul id="offerings-list"></ul></div>
-
       <button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
       <div class="panel"><p id="why-text"></p></div>
-
       <button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services">Service & Engineering</span></button>
       <div class="panel"><ul id="services-list"></ul></div>
-
       <button class="cloud-button" onclick="togglePanel(this)"><span id="acc-contact">Contact Us</span></button>
       <div class="panel">
         <h2 id="contact-title">📢 Contact Us</h2>
@@ -172,11 +166,9 @@
       </div>
     </div>
   </div>
-
   <footer>
     <p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
   </footer>
-
 <script src="translations.js"></script>
 <script>
   function togglePanel(btn) {
