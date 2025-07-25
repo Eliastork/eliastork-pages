@@ -118,7 +118,7 @@
 <body>
   <header>
     <h1>ELIASTORK LTD</h1>
-    <p id="slogan">Engineering &amp; Supply Solutions for Pharma &amp; Industry</p>
+    <p id="slogan">Engineering & Supply Solutions for Pharma & Industry</p>
   </header>
   <div class="right-column">
     <div class="language-switcher">
@@ -129,19 +129,25 @@
     <div class="accordion-container">
       <button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
       <div class="panel"><ul id="about-list"></ul></div>
+
       <button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer">Key Offerings</span></button>
       <div class="panel"><ul id="offerings-list"></ul></div>
+
       <button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
-      <div class="panel"><p id="why-text"></p>
+      <div class="panel">
+        <p id="why-text"></p>
         <div style="margin-top: 1rem;">
           <h3 id="video-title">Company Video</h3>
           <video style="width: 100%;" autoplay muted controls>
             <source src="ELIASTORK_video_subtitles_debussy.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
-        </div></div>
-      <button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services">Service &amp; Engineering</span></button>
+        </div>
+      </div>
+
+      <button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services">Service & Engineering</span></button>
       <div class="panel"><ul id="services-list"></ul></div>
+
       <button class="cloud-button" onclick="togglePanel(this)"><span id="acc-contact">Contact Us</span></button>
       <div class="panel">
         <h2 id="contact-title">Contact Us</h2>
@@ -165,47 +171,18 @@
   <footer>
     <p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
   </footer>
-  <script src="translations.js"></script>
+
+  <!-- ВСТРОЕННЫЕ ПЕРЕВОДЫ -->
+  <script>
+    const translations = {/* ⬅️ Вставь сюда весь translations JSON, как мы уже собрали: en, ru, he */};
+  </script>
+
+  <!-- ЛОГИКА -->
   <script>
     function setLanguage(lang) {
       if (!translations[lang]) return;
       const t = translations[lang];
-      ['about', 'offerings', 'services'].forEach(section => {
-  const list = document.getElementById(section + '-list');
-  if (Array.isArray(t[section]) && list) {
-    list.innerHTML = '';
-    t[section].forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      list.appendChild(li);
-    });
-  }
-});
-      document.getElementById('slogan').textContent = t.slogan;
-      document.getElementById('acc-about').textContent = t.about_title;
-      document.getElementById('acc-offer').textContent = t.offerings_title;
-      document.getElementById('acc-why').textContent = t.why_title;
-      document.getElementById('acc-services').textContent = t.services_title;
-      document.getElementById('acc-contact').textContent = t.contact_title;
-      document.getElementById('acc-video').textContent = t.video_title;
-      document.getElementById('video-title').textContent = t.video_title;
-      document.getElementById('contact-title').textContent = t.contact_title;
-      document.getElementById('label-address').textContent = t.labels.address;
-      document.getElementById('label-phones').textContent = t.labels.phones;
-      document.getElementById('label-emails').textContent = t.labels.emails;
-      document.getElementById('label-mod').textContent = t.labels.mod;
-      document.getElementById('label-reg').textContent = t.labels.reg;
-      document.getElementById('label-duns').textContent = t.labels.duns;
-      document.getElementById('addr-value').textContent = t.address;
-      document.getElementById('phone-value').innerHTML = t.phones
-        .split(" / ")
-        .map(num => `<a href="https://wa.me/${num.replace(/[^0-9]/g, '')}" target="_blank">${num}</a>`)
-        .join("<br>");
-      document.getElementById('email-value').innerHTML = t.emails.map(e => `<a href="mailto:${e}">${e}</a>`).join("<br>");
-      document.getElementById('mod-value').textContent = t.mod;
-      document.getElementById('reg-value').textContent = t.reg;
-      document.getElementById('duns-value').textContent = t.duns;
-      document.getElementById('footer-text').textContent = t.footer;
+
       ['about', 'offerings', 'services'].forEach(section => {
         const list = document.getElementById(section + '-list');
         if (Array.isArray(t[section]) && list) {
@@ -217,24 +194,16 @@
           });
         }
       });
-      document.getElementById('why-text').textContent = t.why;
-      document.body.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
-    }
-    function togglePanel(btn) {
-      document.querySelectorAll('.panel').forEach(panel => {
-        if (panel !== btn.nextElementSibling) {
-          panel.classList.remove('show');
-        }
-      });
-      const panel = btn.nextElementSibling;
-      panel.classList.toggle("show");
-    }
-    window.addEventListener('DOMContentLoaded', () => setLanguage('en'));
-    window.addEventListener('keydown', (e) => {
-      if (e.key === "Escape") {
-        document.querySelectorAll('.panel').forEach(panel => panel.classList.remove('show'));
-      }
-    });
-  </script>
-</body>
-</html>
+
+      document.getElementById('slogan').textContent = t.slogan;
+      document.getElementById('acc-about').textContent = t.about_title;
+      document.getElementById('acc-offer').textContent = t.offerings_title;
+      document.getElementById('acc-why').textContent = t.why_title;
+      document.getElementById('acc-services').textContent = t.services_title;
+      document.getElementById('acc-contact').textContent = t.contact_title;
+      document.getElementById('video-title').textContent = t.video_title;
+      document.getElementById('contact-title').textContent = t.contact_title;
+
+      document.getElementById('label-address').textContent = t.labels.address;
+      document.getElementById('label-phones').textContent = t.labels.phones;
+      document.getElementById('label-emails').textContent =
