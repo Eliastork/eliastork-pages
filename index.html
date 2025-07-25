@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>ELIASTORK LTD – Engineering &amp; Supply Solutions</title>
-<style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELIASTORK LTD – Engineering & Supply Solutions</title>
+  <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -20,12 +19,12 @@
       background: none;
       text-align: center;
       padding: 1rem;
-      text-shadow: 0 0 10px rgba(200, 220, 255, 0.5);
+      text-shadow: 0 0 8px rgba(200, 220, 255, 0.5);
     }
 
     .language-switcher {
       display: flex;
-      justify-content: right;
+      justify-content: center;
       margin: 1rem;
       gap: 0.5rem;
     }
@@ -37,7 +36,7 @@
     }
 
     .cloud-button {
-      background: url('cloud-button-transparent.png') no-repeat center left;
+      background: url('cloud-button-bluegray.png') no-repeat center center;
       background-size: contain;
       background-color: transparent;
       width: 75%;
@@ -70,10 +69,6 @@
     }
 
     .accordion-container {
-      margin-left: auto;
-      margin-right: 0;
-      align-items: flex-end;
-
       max-width: 800px;
       margin-left: auto;
       margin-right: 0;
@@ -129,98 +124,52 @@
     .panel {
       padding: 0.75rem;
     }
-  
-    .contact-columns {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    </style>
+  </style>
 </head>
 <body>
-<header>
-<h1>ELIASTORK LTD</h1>
-<p id="slogan">Engineering &amp; Supply Solutions for Pharma &amp; Industry</p>
-</header>
-<div class="right-column">
-<div class="language-switcher">
-<button onclick="setLanguage('en')">🇬🇧</button>
-<button onclick="setLanguage('ru')">🇷🇺</button>
-<button onclick="setLanguage('he')">🇮🇱</button>
-</div>
-<div class="accordion-container">
-<button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
-<div class="panel"><ul id="about-list"></ul></div>
-<button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer">Key Offerings</span></button>
-<div class="panel"><ul id="offerings-list"></ul></div>
-<button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
-<div class="panel">
-<p id="why-text"></p>
-<video controls="" width="100%">
-<source src="ELIASTORK_video_subtitles_debussy.mp4" type="video/mp4"/>
-          Your browser does not support the video tag.
-        </video>
-</div>
-<button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services">Service &amp; Engineering</span></button>
-<div class="panel"><ul id="services-list"></ul></div>
-<button class="cloud-button" onclick="togglePanel(this)"><span id="acc-contact">Contact Us</span></button>
-<div class="panel">
-<h2 id="contact-title">📢 Contact Us</h2>
-<div class="contact-columns">
-<div>
-<p><strong>📍 Address:</strong><br/><span id="addr-value"></span></p>
-<p><strong>📞 Phones:</strong><br/><span id="phone-value"><a href="https://wa.me/972525444823" target="_blank">+972525444823</a><br/>
-<a href="https://wa.me/972527204290" target="_blank">+972527204290</a></span></p>
-</div>
-<div>
-<p><strong>📧 Emails:</strong><br/><span id="email-value"><a href="mailto:maximchuchnov@eliastork.com">maximchuchnov@eliastork.com</a><br/>
-<a href="mailto:vladimirpogost@eliastork.com">vladimirpogost@eliastork.com</a></span></p>
-<p>
-<strong>🏷 MOD Vendor ID:</strong> <span id="mod-value"></span><br/>
-<strong>🏢 Company Reg. No.:</strong> <span id="reg-value"></span><br/>
-<strong>📊 DUNS Number:</strong> <span id="duns-value"></span>
-</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<footer>
-<p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
-</footer>
-<script src="translations.js"></script><script>
-function setLanguage(lang) {
-  if (!translations[lang]) return;
-
-  const t = translations[lang];
-
-  document.getElementById('slogan').textContent = t.slogan;
-  document.getElementById('acc-about').textContent = t.aboutTitle;
-  document.getElementById('acc-offer').textContent = t.offeringsTitle;
-  document.getElementById('acc-why').textContent = t.whyTitle;
-  document.getElementById('acc-services').textContent = t.servicesTitle;
-  document.getElementById('acc-contact').textContent = t.contactTitle;
-  document.getElementById('contact-title').textContent = "📢 " + t.contactTitle;
-
-  document.getElementById('addr-value').textContent = t.address;
-  document.getElementById('phone-value').innerHTML = t.phones
-    .split(" / ")
-    .map(num => `<a href="https://wa.me/${num.replace(/[^0-9]/g, '')}" target="_blank">${num}</a>`)
-    .join("<br/>");
-
-  document.getElementById('email-value').innerHTML = t.emails
-    .map(e => `<a href="mailto:${e}">${e}</a>`)
-    .join("<br/>");
-
-  document.getElementById('mod-value').textContent = t.mod;
-  document.getElementById('reg-value').textContent = t.reg;
-  document.getElementById('duns-value').textContent = t.duns;
-  document.getElementById('footer-text').textContent = t.footer;
-
-  document.body.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
-}
-</script>
+  <header>
+    <h1>ELIASTORK LTD</h1>
+    <p id="slogan">Engineering & Supply Solutions for Pharma & Industry</p>
+  </header>
+  <div class="right-column">
+    <div class="language-switcher">
+      <button onclick="setLanguage('en')">🇬🇧</button>
+      <button onclick="setLanguage('ru')">🇷🇺</button>
+      <button onclick="setLanguage('he')">🇮🇱</button>
+    </div>
+    <div class="accordion-container">
+      <button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
+      <div class="panel"><ul id="about-list"></ul></div>
+      <button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer">Key Offerings</span></button>
+      <div class="panel"><ul id="offerings-list"></ul></div>
+      <button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
+      <div class="panel"><p id="why-text"></p></div>
+      <button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services">Service & Engineering</span></button>
+      <div class="panel"><ul id="services-list"></ul></div>
+      <button class="cloud-button" onclick="togglePanel(this)"><span id="acc-contact">Contact Us</span></button>
+      <div class="panel">
+        <h2 id="contact-title">📢 Contact Us</h2>
+        <div class="contact-columns">
+          <div>
+            <p><strong>📍 Address:</strong><br><span id="addr-value"></span></p>
+            <p><strong>📞 Phones:</strong><br><span id="phone-value"></span></p>
+          </div>
+          <div>
+            <p><strong>📧 Emails:</strong><br><span id="email-value"></span></p>
+            <p>
+              <strong>🏷 MOD Vendor ID:</strong> <span id="mod-value"></span><br>
+              <strong>🏢 Company Reg. No.:</strong> <span id="reg-value"></span><br>
+              <strong>📊 DUNS Number:</strong> <span id="duns-value"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
+  </footer>
+<script src="translations.js"></script>
 <script>
   function togglePanel(btn) {
     document.querySelectorAll('.panel').forEach(panel => {
@@ -232,15 +181,6 @@ function setLanguage(lang) {
     panel.classList.toggle("show");
   }
   window.addEventListener('DOMContentLoaded', () => setLanguage('en'));
-  // ⎋ Закрытие всех аккордионов по Escape
-  window.addEventListener('keydown', (e) => {
-    if (e.key === "Escape") {
-      document.querySelectorAll('.panel').forEach(panel => {
-        panel.classList.remove('show');
-      });
-    }
-  });
-
 </script>
 </body>
 </html>
