@@ -170,6 +170,17 @@
     function setLanguage(lang) {
       if (!translations[lang]) return;
       const t = translations[lang];
+      ['about', 'offerings', 'services'].forEach(section => {
+  const list = document.getElementById(section + '-list');
+  if (Array.isArray(t[section]) && list) {
+    list.innerHTML = '';
+    t[section].forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      list.appendChild(li);
+    });
+  }
+});
       document.getElementById('slogan').textContent = t.slogan;
       document.getElementById('acc-about').textContent = t.about_title;
       document.getElementById('acc-offer').textContent = t.offerings_title;
