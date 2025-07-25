@@ -11,8 +11,15 @@ const translations = {
       "Based in Israel, serving clients worldwide."
     ],
     offerings: [
-      "Custom equipment sourcing and engineering support.",
-      "Global logistics and MOD-certified procurement."
+  "GMP Pharmaceutical Equipment: Mixing, granulation, tableting, packaging",
+  "CNC & Metalworking Machinery: Lathes, lasers, guillotines, accessories",
+  "Packaging & Sorting Systems",
+  "Temperature & Climate Test Chambers",
+  "Industrial Raw Materials & Metals",
+  "Auxiliary Equipment for Production & Storage",
+  "Water Distribution Systems: Pumps, valves, controls",
+  "Electrical Equipment for Industry",
+  "Modernization & Spare Parts Supply"
     ],
     why: "Clients choose us for quality, transparency, and reliability.",
     services: [
