@@ -1,8 +1,4 @@
-window.translations = {
-  en: { /* ... английский перевод ... */ },
-  ru: { /* ... русский перевод ... */ },
-  he: { /* ... иврит перевод ... */ }
-};
+
 const translations = {
   en: {
     about_title: "About Us",
