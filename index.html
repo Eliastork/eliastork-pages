@@ -226,6 +226,18 @@ function setLanguage(lang) {
   document.getElementById('duns-value').textContent = t.duns;
   document.getElementById('footer-text').textContent = t.footer;
 
+  
+  ['about', 'offerings', 'services'].forEach(section => {
+    const list = document.getElementById(section + '-list');
+    if (Array.isArray(t[section]) && list) {
+      list.innerHTML = '';
+      t[section].forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
+      });
+    }
+  });
   document.body.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
 }
 </script>
