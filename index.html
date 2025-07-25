@@ -189,7 +189,38 @@
 <footer>
 <p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
 </footer>
-<script src="translations.js"></script>
+<script src="translations.js"></script><script>
+function setLanguage(lang) {
+  if (!translations[lang]) return;
+
+  const t = translations[lang];
+
+  document.getElementById('slogan').textContent = t.slogan;
+  document.getElementById('acc-about').textContent = t.aboutTitle;
+  document.getElementById('acc-offer').textContent = t.offeringsTitle;
+  document.getElementById('acc-why').textContent = t.whyTitle;
+  document.getElementById('acc-services').textContent = t.servicesTitle;
+  document.getElementById('acc-contact').textContent = t.contactTitle;
+  document.getElementById('contact-title').textContent = "📢 " + t.contactTitle;
+
+  document.getElementById('addr-value').textContent = t.address;
+  document.getElementById('phone-value').innerHTML = t.phones
+    .split(" / ")
+    .map(num => `<a href="https://wa.me/${num.replace(/[^0-9]/g, '')}" target="_blank">${num}</a>`)
+    .join("<br/>");
+
+  document.getElementById('email-value').innerHTML = t.emails
+    .map(e => `<a href="mailto:${e}">${e}</a>`)
+    .join("<br/>");
+
+  document.getElementById('mod-value').textContent = t.mod;
+  document.getElementById('reg-value').textContent = t.reg;
+  document.getElementById('duns-value').textContent = t.duns;
+  document.getElementById('footer-text').textContent = t.footer;
+
+  document.body.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
+}
+</script>
 <script>
   function togglePanel(btn) {
     document.querySelectorAll('.panel').forEach(panel => {
