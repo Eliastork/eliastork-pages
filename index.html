@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>ELIASTORK LTD – Engineering &amp; Supply Solutions</title>
-<style>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>ELIASTORK LTD – Engineering & Supply Solutions</title>
+  <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -70,11 +69,12 @@
     }
 
     .accordion-container {
-  align-items: flex-end;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: 0;
-}
+      align-items: flex-end;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: 0;
+    }
+
     .panel {
       width: 100%;
       display: none;
@@ -119,148 +119,140 @@
         color: #B0C4DE !important;
         text-shadow: 0 0 10px rgba(100, 149, 237, 0.8) !important;
       }
-      
     }
-    
-  
+
     .contact-columns {
       display: flex;
       flex-direction: column;
       gap: 1rem;
       align-items: flex-start;
     }
-    </style>
+  </style>
 </head>
 <body>
-<header>
-<h1>ELIASTORK LTD</h1>
-<p id="slogan">Engineering &amp; Supply Solutions for Pharma &amp; Industry</p>
-</header>
-<div class="right-column">
-<div class="language-switcher">
-<button onclick="setLanguage('en')">🇬🇧</button>
-<button onclick="setLanguage('ru')">🇷🇺</button>
-<button onclick="setLanguage('he')">🇮🇱</button>
-</div>
-<div class="accordion-container">
-<button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
-<div class="panel"><ul id="about-list"></ul></div>
-<button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer">Key Offerings</span></button>
-<div class="panel"><ul id="offerings-list"></ul></div>
-<button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
-<div class="panel">
-<p id="why-text"></p>
-<video controls="" width="100%">
-<source src="ELIASTORK_video_subtitles_debussy.mp4" type="video/mp4"/>
+  <header>
+    <h1>ELIASTORK LTD</h1>
+    <p id="slogan">Engineering &amp; Supply Solutions for Pharma &amp; Industry</p>
+  </header>
+  <div class="right-column">
+    <div class="language-switcher">
+      <button onclick="setLanguage('en')">🇬🇧</button>
+      <button onclick="setLanguage('ru')">🇷🇺</button>
+      <button onclick="setLanguage('he')">🇮🇱</button>
+    </div>
+    <div class="accordion-container">
+      <button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
+      <div class="panel"><ul id="about-list"></ul></div>
+
+      <button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer">Key Offerings</span></button>
+      <div class="panel"><ul id="offerings-list"></ul></div>
+
+      <button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
+      <div class="panel">
+        <p id="why-text"></p>
+        <video controls="" width="100%">
+          <source src="ELIASTORK_video_subtitles_debussy.mp4" type="video/mp4"/>
           Your browser does not support the video tag.
         </video>
-</div>
-<button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services">Service &amp; Engineering</span></button>
-<div class="panel"><ul id="services-list"></ul></div>
-<button class="cloud-button" onclick="togglePanel(this)"><span id="acc-contact">Contact Us</span></button>
-<div class="panel">
-<h2 id="contact-title">📢 Contact Us</h2>
-<div class="contact-columns">
-<div>
-<p><strong>📍 Address:</strong><br/><span id="addr-value"></span></p>
-<p><strong>📞 Phones:</strong><br/><span id="phone-value"><a href="https://wa.me/972525444823" target="_blank">+972525444823</a><br/>
-<a href="https://wa.me/972527204290" target="_blank">+972527204290</a></span></p>
-</div>
-<div>
-<p><strong>📧 Emails:</strong><br/><span id="email-value"><a href="mailto:maximchuchnov@eliastork.com">maximchuchnov@eliastork.com</a><br/>
-<a href="mailto:vladimirpogost@eliastork.com">vladimirpogost@eliastork.com</a></span></p>
-<p>
-<strong>🏷 MOD Vendor ID:</strong> <span id="mod-value"></span><br/>
-<strong>🏢 Company Reg. No.:</strong> <span id="reg-value"></span><br/>
-<strong>📊 DUNS Number:</strong> <span id="duns-value"></span>
-</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<footer>
-<p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
-</footer>
-<script src="translations.js"></script><script>
-function setLanguage(lang) {
-  if (!translations[lang]) return;
+      </div>
 
-  const t = translations[lang];
+      <button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services">Service &amp; Engineering</span></button>
+      <div class="panel"><ul id="services-list"></ul></div>
 
-  document.getElementById('slogan').textContent = t.slogan;
-  document.getElementById('acc-about').textContent = t.about_title;
-  document.getElementById('acc-offer').textContent = t.offerings_title;
-  document.getElementById('acc-why').textContent = t.why_title;
-  document.getElementById('acc-services').textContent = t.services_title;
-  document.getElementById('acc-contact').textContent = t.contact_title;
-  document.getElementById('contact-title').textContent = "📢 " + t.contact_title;
+      <button class="cloud-button" onclick="togglePanel(this)"><span id="acc-contact">Contact Us</span></button>
+      <div class="panel">
+        <h2 id="contact-title">📢 Contact Us</h2>
+        <div class="contact-columns">
+          <div>
+            <p><strong>📍 Address:</strong><br/><span id="addr-value"></span></p>
+            <p><strong>📞 Phones:</strong><br/><span id="phone-value"></span></p>
+          </div>
+          <div>
+            <p><strong>📧 Emails:</strong><br/><span id="email-value"></span></p>
+            <p>
+              <strong>🏷 MOD Vendor ID:</strong> <span id="mod-value"></span><br/>
+              <strong>🏢 Company Reg. No.:</strong> <span id="reg-value"></span><br/>
+              <strong>📊 DUNS Number:</strong> <span id="duns-value"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
+  </footer>
 
-  document.getElementById('addr-value').textContent = t.address;
-  document.getElementById('phone-value').innerHTML = t.phones
-    .split(" / ")
-    .map(num => `<a href="https://wa.me/${num.replace(/[^0-9]/g, '')
-  // Dynamic insertion of list content
-  ['about', 'offerings', 'services'].forEach(section => {
-    const listId = section + '-list';
-    const data = t[section];
-    const container = document.getElementById(listId);
-    if (Array.isArray(data) && container) {
-      container.innerHTML = '';
-      data.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        container.appendChild(li);
+  <script src="translations.js"></script>
+  <script>
+    function setLanguage(lang) {
+      if (!translations[lang]) return;
+
+      const t = translations[lang];
+
+      document.getElementById('slogan').textContent = t.slogan;
+      document.getElementById('acc-about').textContent = t.about_title;
+      document.getElementById('acc-offer').textContent = t.offerings_title;
+      document.getElementById('acc-why').textContent = t.why_title;
+      document.getElementById('acc-services').textContent = t.services_title;
+      document.getElementById('acc-contact').textContent = t.contact_title;
+      document.getElementById('contact-title').textContent = "📢 " + t.contact_title;
+
+      document.getElementById('addr-value').textContent = t.address;
+
+      document.getElementById('phone-value').innerHTML = t.phones
+        .split(" / ")
+        .map(num => {
+          const clean = num.replace(/[^0-9]/g, '');
+          return `<a href="https://wa.me/${clean}" target="_blank">${num}</a>`;
+        })
+        .join("<br/>");
+
+      document.getElementById('email-value').innerHTML = t.emails
+        .map(e => `<a href="mailto:${e}">${e}</a>`)
+        .join("<br/>");
+
+      document.getElementById('mod-value').textContent = t.mod;
+      document.getElementById('reg-value').textContent = t.reg;
+      document.getElementById('duns-value').textContent = t.duns;
+      document.getElementById('footer-text').textContent = t.footer;
+
+      ['about', 'offerings', 'services'].forEach(section => {
+        const list = document.getElementById(section + '-list');
+        if (Array.isArray(t[section]) && list) {
+          list.innerHTML = '';
+          t[section].forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            list.appendChild(li);
+          });
+        }
       });
+
+      document.getElementById('why-text').textContent = t.why;
+
+      document.body.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
     }
-  });
-}" target="_blank">${num}</a>`)
-    .join("<br/>");
 
-  document.getElementById('email-value').innerHTML = t.emails
-    .map(e => `<a href="mailto:${e}">${e}</a>`)
-    .join("<br/>");
-
-  document.getElementById('mod-value').textContent = t.mod;
-  document.getElementById('reg-value').textContent = t.reg;
-  document.getElementById('duns-value').textContent = t.duns;
-  document.getElementById('footer-text').textContent = t.footer;
-
-  
-  ['about', 'offerings', 'services'].forEach(section => {
-    const list = document.getElementById(section + '-list');
-    if (Array.isArray(t[section]) && list) {
-      list.innerHTML = '';
-      t[section].forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        list.appendChild(li);
+    function togglePanel(btn) {
+      document.querySelectorAll('.panel').forEach(panel => {
+        if (panel !== btn.nextElementSibling) {
+          panel.classList.remove('show');
+        }
       });
+      const panel = btn.nextElementSibling;
+      panel.classList.toggle("show");
     }
-  });
-  document.body.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
-}
-</script>
-<script>
-  function togglePanel(btn) {
-    document.querySelectorAll('.panel').forEach(panel => {
-      if (panel !== btn.nextElementSibling) {
-        panel.classList.remove('show');
+
+    window.addEventListener('DOMContentLoaded', () => setLanguage('en'));
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === "Escape") {
+        document.querySelectorAll('.panel').forEach(panel => {
+          panel.classList.remove('show');
+        });
       }
     });
-    const panel = btn.nextElementSibling;
-    panel.classList.toggle("show");
-  }
-  window.addEventListener('DOMContentLoaded', () => setLanguage('en'));
-  // ⎋ Закрытие всех аккордионов по Escape
-  window.addEventListener('keydown', (e) => {
-    if (e.key === "Escape") {
-      document.querySelectorAll('.panel').forEach(panel => {
-        panel.classList.remove('show');
-      });
-    }
-  });
-
-</script>
+  </script>
 </body>
 </html>
