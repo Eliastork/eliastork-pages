@@ -14,9 +14,8 @@ const translations = {
     duns: "565241722",
     footer: "Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD",
     aboutList: [
-      "Founded in 2020",
-      "Based in Israel",
-      "Expertise in pharma & industry"
+    "We are an engineering and supply company with expertise in pharma and industry.",
+      "Based in Israel, serving clients worldwide."
     ],
     offeringsList: [
       "Engineering services",
