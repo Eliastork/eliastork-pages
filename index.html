@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>ELIASTORK LTD – Engineering & Supply Solutions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    body[dir="rtl"] { text-align: right; }
+    body[dir="ltr"] { text-align: left; }
+    body[dir="rtl"] .contact-columns {
+      direction: rtl;
+      text-align: right;
+    }
+    header, footer {
+      background: none;
+      text-align: center;
+      padding: 1rem;
+      text-shadow: 0 0 10px rgba(200, 220, 255, 0.5);
+    }
+    .language-switcher {
+      display: flex;
+      justify-content: center;
+      margin: 1rem;
+      gap: 0.5rem;
+    }
+    .language-switcher button {
+      font-size: 1.5rem;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+    .cloud-button {
+      background: url('cloud-button-transparent.png') no-repeat center left;
+      background-size: contain;
+      background-color: transparent;
+      width: 75%;
+      max-width: 450px;
+      height: 90px;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin: 1rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-shadow: 0 0 8px rgba(200, 220, 255, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: float 6s ease-in-out infinite;
+    }
+    .cloud-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    .cloud-button span {
+      color: #D8E6F3 !important;
+      text-shadow: 0 0 15px rgba(0, 128, 255, 0.9) !important;
+    }
+    @keyframes float {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
+    }
+    .accordion-container {
+      align-items: flex-end;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: 0;
+    }
+    .panel {
+      width: 100%;
+      display: none;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      background-color: rgba(226, 232, 240, 0.85);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+    }
+    .panel.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .right-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto;
+      width: 800px;
+      max-width: 100%;
+    }
+    .contact-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .contact-columns div {
+      flex: 1;
+    }
+    @media (max-width: 600px) {
+      .cloud-button {
+        height: 60px;
+        font-size: 1.2rem;
+      }
+      .cloud-button span {
+        color: #B0C4DE !important;
+        text-shadow: 0 0 10px rgba(100, 149, 237, 0.8) !important;
+      }
+    }
+    .contact-columns {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ELIASTORK LTD</h1>
+    <p id="slogan">Engineering &amp; Supply Solutions for Pharma &amp; Industry</p>
+  </header>
+  <div class="right-column">
+    <div class="language-switcher">
+      <button onclick="setLanguage('en')">🇬🇧</button>
+      <button onclick="setLanguage('ru')">🇷🇺</button>
+      <button onclick="setLanguage('he')">🇮🇱</button>
+    </div>
+    <div class="accordion-container">
+      <button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
+      <div class="panel"><ul id="about-list"></ul></div>
+      <button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer">Key Offerings</span></button>
+      <div class="panel"><ul id="offerings-list"></ul></div>
+      <button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
+      <div class="panel"><p id="why-text"></p></div>
+      <button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services">Service &amp; Engineering</span></button>
+      <div class="panel"><ul id="services-list"></ul></div>
+      <button class="cloud-button" onclick="togglePanel(this)"><span id="acc-contact">Contact Us</span></button>
+      <div class="panel">
+        <h2 id="contact-title">Contact Us</h2>
+        <div class="contact-columns">
+          <div>
+            <p><strong id="label-address"></strong><br/><span id="addr-value"></span></p>
+            <p><strong id="label-phones"></strong><br/><span id="phone-value"></span></p>
+          </div>
+          <div>
+            <p><strong id="label-emails"></strong><br/><span id="email-value"></span></p>
+            <p>
+              <strong id="label-mod"></strong> <span id="mod-value"></span><br/>
+              <strong id="label-reg"></strong> <span id="reg-value"></span><br/>
+              <strong id="label-duns"></strong> <span id="duns-value"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
+  </footer>
+  <script src="translations.js"></script>
+  <script>
+    function setLanguage(lang) {
+      if (!translations[lang]) return;
+      const t = translations[lang];
+      document.getElementById('slogan').textContent = t.slogan;
+      document.getElementById('acc-about').textContent = t.about_title;
+      document.getElementById('acc-offer').textContent = t.offerings_title;
+      document.getElementById('acc-why').textContent = t.why_title;
+      document.getElementById('acc-services').textContent = t.services_title;
+      document.getElementById('acc-contact').textContent = t.contact_title;
+      document.getElementById('contact-title').textContent = t.contact_title;
+      document.getElementById('label-address').textContent = t.labels.address;
+      document.getElementById('label-phones').textContent = t.labels.phones;
+      document.getElementById('label-emails').textContent = t.labels.emails;
+      document.getElementById('label-mod').textContent = t.labels.mod;
+      document.getElementById('label-reg').textContent = t.labels.reg;
+      document.getElementById('label-duns').textContent = t.labels.duns;
+      document.getElementById('addr-value').textContent = t.address;
+      document.getElementById('phone-value').innerHTML = t.phones
+        .split(" / ")
+        .map(num => `<a href="https://wa.me/${num.replace(/[^0-9]/g, '')}" target="_blank">${num}</a>`)
+        .join("<br/>");
+      document.getElementById('email-value').innerHTML = t.emails.map(e => `<a href="mailto:${e}">${e}</a>`).join("<br/>");
+      document.getElementById('mod-value').textContent = t.mod;
+      document.getElementById('reg-value').textContent = t.reg;
+      document.getElementById('duns-value').textContent = t.duns;
+      document.getElementById('footer-text').textContent = t.footer;
+      ['about', 'offerings', 'services'].forEach(section => {
+        const list = document.getElementById(section + '-list');
+        if (Array.isArray(t[section]) && list) {
+          list.innerHTML = '';
+          t[section].forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            list.appendChild(li);
+          });
+        }
+      });
+      document.getElementById('why-text').textContent = t.why;
+      document.body.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
+    }
+    function togglePanel(btn) {
+      document.querySelectorAll('.panel').forEach(panel => {
+        if (panel !== btn.nextElementSibling) {
+          panel.classList.remove('show');
+        }
+      });
+      const panel = btn.nextElementSibling;
+      panel.classList.toggle("show");
+    }
+    window.addEventListener('DOMContentLoaded', () => setLanguage('en'));
+    window.addEventListener('keydown', (e) => {
+      if (e.key === "Escape") {
+        document.querySelectorAll('.panel').forEach(panel => panel.classList.remove('show'));
+      }
+    });
+  </script>
+</body>
+</html>
