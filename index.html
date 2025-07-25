@@ -2,8 +2,8 @@
 
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>ELIASTORK LTD – Engineering &amp; Supply Solutions</title>
 <style>
     body {
@@ -157,8 +157,8 @@
 <button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
 <div class="panel">
 <p id="why-text"></p>
-<video controls="" width="100%">
-<source src="ELIASTORK_video_subtitles_debussy.mp4" type="video/mp4"/>
+<video controls="" style="width: 100%;">
+<source src="ELIASTORK_video_subtitles_debussy.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
 </div>
@@ -169,16 +169,16 @@
 <h2 id="contact-title">📢 Contact Us</h2>
 <div class="contact-columns">
 <div>
-<p><strong>📍 Address:</strong><br/><span id="addr-value"></span></p>
-<p><strong>📞 Phones:</strong><br/><span id="phone-value"><a href="https://wa.me/972525444823" target="_blank">+972525444823</a><br/>
+<p><strong>📍 Address:</strong><br><span id="addr-value"></span></p>
+<p><strong>📞 Phones:</strong><br><span id="phone-value"><a href="https://wa.me/972525444823" target="_blank">+972525444823</a><br>
 <a href="https://wa.me/972527204290" target="_blank">+972527204290</a></span></p>
 </div>
 <div>
-<p><strong>📧 Emails:</strong><br/><span id="email-value"><a href="mailto:maximchuchnov@eliastork.com">maximchuchnov@eliastork.com</a><br/>
+<p><strong>📧 Emails:</strong><br><span id="email-value"><a href="mailto:maximchuchnov@eliastork.com">maximchuchnov@eliastork.com</a><br>
 <a href="mailto:vladimirpogost@eliastork.com">vladimirpogost@eliastork.com</a></span></p>
 <p>
-<strong>🏷 MOD Vendor ID:</strong> <span id="mod-value"></span><br/>
-<strong>🏢 Company Reg. No.:</strong> <span id="reg-value"></span><br/>
+<strong>🏷 MOD Vendor ID:</strong> <span id="mod-value"></span><br>
+<strong>🏢 Company Reg. No.:</strong> <span id="reg-value"></span><br>
 <strong>📊 DUNS Number:</strong> <span id="duns-value"></span>
 </p>
 </div>
@@ -355,11 +355,11 @@ function setLanguage(lang) {
   document.getElementById('phone-value').innerHTML = t.phones
     .split(" / ")
     .map(num => `<a href="https://wa.me/${num.replace(/[^0-9]/g, '')}" target="_blank">${num}</a>`)
-    .join("<br/>");
+    .join("<br>");
 
   document.getElementById('email-value').innerHTML = t.emails
     .map(e => `<a href="mailto:${e}">${e}</a>`)
-    .join("<br/>");
+    .join("<br>");
 
   document.getElementById('mod-value').textContent = t.mod;
   document.getElementById('reg-value').textContent = t.reg;
