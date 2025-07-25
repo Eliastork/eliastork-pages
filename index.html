@@ -131,22 +131,28 @@
     <h1>ELIASTORK LTD</h1>
     <p id="slogan">Engineering & Supply Solutions for Pharma & Industry</p>
   </header>
+
   <div class="right-column">
     <div class="language-switcher">
       <button onclick="setLanguage('en')">🇬🇧</button>
       <button onclick="setLanguage('ru')">🇷🇺</button>
       <button onclick="setLanguage('he')">🇮🇱</button>
     </div>
+
     <div class="accordion-container">
-      <button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
+      <button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about"></span></button>
       <div class="panel"><ul id="about-list"></ul></div>
-      <button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer">Key Offerings</span></button>
+
+      <button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer"></span></button>
       <div class="panel"><ul id="offerings-list"></ul></div>
-      <button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
+
+      <button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why"></span></button>
       <div class="panel"><p id="why-text"></p></div>
-      <button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services">Service & Engineering</span></button>
+
+      <button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services"></span></button>
       <div class="panel"><ul id="services-list"></ul></div>
-      <button class="cloud-button" onclick="togglePanel(this)"><span id="acc-contact">Contact Us</span></button>
+
+      <button class="cloud-button" onclick="togglePanel(this)"><span id="acc-contact"></span></button>
       <div class="panel">
         <h2 id="contact-title">📢 Contact Us</h2>
         <div class="contact-columns">
@@ -166,21 +172,51 @@
       </div>
     </div>
   </div>
+
   <footer>
-    <p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
+    <p id="footer-text"></p>
   </footer>
-<script src="translations.js"></script>
-<script>
-  function togglePanel(btn) {
-    document.querySelectorAll('.panel').forEach(panel => {
-      if (panel !== btn.nextElementSibling) {
-        panel.classList.remove('show');
-      }
-    });
-    const panel = btn.nextElementSibling;
-    panel.classList.toggle("show");
-  }
-  window.addEventListener('DOMContentLoaded', () => setLanguage('en'));
-</script>
-</body>
-</html>
+
+  <script src="translations.js"></script>
+  <script>
+    function setLanguage(lang) {
+      localStorage.setItem('selectedLang', lang);
+      const t = window.translations[lang];
+
+      document.getElementById("acc-about").textContent = t.about_title;
+      document.getElementById("acc-offer").textContent = t.offerings_title;
+      document.getElementById("acc-why").textContent = t.why_title;
+      document.getElementById("acc-services").textContent = t.services_title;
+      document.getElementById("acc-contact").textContent = t.contact_title;
+
+      document.getElementById("about-list").innerHTML = t.about.map(item => `<li>${item}</li>`).join('');
+      document.getElementById("offerings-list").innerHTML = t.offerings.map(item => `<li>${item}</li>`).join('');
+      document.getElementById("why-text").textContent = t.why;
+      document.getElementById("services-list").innerHTML = t.services.map(item => `<li>${item}</li>`).join('');
+
+      document.getElementById("addr-value").textContent = t.address;
+      document.getElementById("phone-value").textContent = t.phones;
+      document.getElementById("email-value").textContent = t.emails;
+      document.getElementById("mod-value").textContent = t.mod;
+      document.getElementById("reg-value").textContent = t.reg;
+      document.getElementById("duns-value").textContent = t.duns;
+
+      document.getElementById("footer-text").textContent = t.footer;
+      document.body.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
+    }
+
+    function togglePanel(btn) {
+      document.querySelectorAll('.panel').forEach(panel => {
+        if (panel !== btn.nextElementSibling) {
+          panel.classList.remove('show');
+        }
+      });
+      const panel = btn.nextElementSibling;
+      panel.classList.toggle("show");
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('selectedLang');
+      const browserLang = navigator.language.slice(0, 2);
+      const availableLangs = ['en', 'ru', 'he'];
+      const langToUse = savedLang || (availableLangs.includes(browserLang) ?
