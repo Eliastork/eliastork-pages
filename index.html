@@ -118,7 +118,7 @@
 <body>
   <header>
     <h1>ELIASTORK LTD</h1>
-    <p id="slogan">Engineering & Supply Solutions for Pharma & Industry</p>
+    <p id="slogan"></p>
   </header>
   <div class="right-column">
     <div class="language-switcher">
@@ -127,17 +127,17 @@
       <button onclick="setLanguage('he')">🇮🇱</button>
     </div>
     <div class="accordion-container">
-      <button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about">About Us</span></button>
+      <button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about"></span></button>
       <div class="panel"><ul id="about-list"></ul></div>
 
-      <button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer">Key Offerings</span></button>
+      <button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer"></span></button>
       <div class="panel"><ul id="offerings-list"></ul></div>
 
-      <button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why">Why Choose Eliastork?</span></button>
+      <button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why"></span></button>
       <div class="panel">
         <p id="why-text"></p>
         <div style="margin-top: 1rem;">
-          <h3 id="video-title">Company Video</h3>
+          <h3 id="video-title"></h3>
           <video style="width: 100%;" autoplay muted controls>
             <source src="ELIASTORK_video_subtitles_debussy.mp4" type="video/mp4">
             Your browser does not support the video tag.
@@ -145,12 +145,12 @@
         </div>
       </div>
 
-      <button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services">Service & Engineering</span></button>
+      <button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services"></span></button>
       <div class="panel"><ul id="services-list"></ul></div>
 
-      <button class="cloud-button" onclick="togglePanel(this)"><span id="acc-contact">Contact Us</span></button>
+      <button class="cloud-button" onclick="togglePanel(this)"><span id="acc-contact"></span></button>
       <div class="panel">
-        <h2 id="contact-title">Contact Us</h2>
+        <h2 id="contact-title"></h2>
         <div class="contact-columns">
           <div>
             <p><strong id="label-address"></strong><br><span id="addr-value"></span></p>
@@ -169,10 +169,9 @@
     </div>
   </div>
   <footer>
-    <p id="footer-text">Trusted engineering. Reliable solutions. © 2025 ELIASTORK LTD</p>
+    <p id="footer-text"></p>
   </footer>
 
-  <!-- ВСТРОЕННЫЕ ПЕРЕВОДЫ -->
   <script>
     const translations = {
   en: {
@@ -319,13 +318,18 @@
     }
   }
 };
-  </script>
 
-  <!-- ЛОГИКА -->
-  <script>
+    function togglePanel(button) {
+      const panel = button.nextElementSibling;
+      const allPanels = document.querySelectorAll('.panel');
+      allPanels.forEach(p => { if (p !== panel) p.classList.remove('show'); });
+      panel.classList.toggle('show');
+    }
+
     function setLanguage(lang) {
       if (!translations[lang]) return;
       const t = translations[lang];
+      document.body.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
 
       ['about', 'offerings', 'services'].forEach(section => {
         const list = document.getElementById(section + '-list');
@@ -345,9 +349,22 @@
       document.getElementById('acc-why').textContent = t.why_title;
       document.getElementById('acc-services').textContent = t.services_title;
       document.getElementById('acc-contact').textContent = t.contact_title;
-      document.getElementById('video-title').textContent = t.video_title;
+      document.getElementById('video-title').textContent = t.video_title || '';
       document.getElementById('contact-title').textContent = t.contact_title;
-
+      document.getElementById('footer-text').textContent = t.footer;
       document.getElementById('label-address').textContent = t.labels.address;
       document.getElementById('label-phones').textContent = t.labels.phones;
       document.getElementById('label-emails').textContent = t.labels.emails;
+      document.getElementById('label-mod').textContent = t.labels.mod;
+      document.getElementById('label-reg').textContent = t.labels.reg;
+      document.getElementById('label-duns').textContent = t.labels.duns;
+      document.getElementById('addr-value').textContent = t.address;
+      document.getElementById('phone-value').textContent = t.phones;
+      document.getElementById('email-value').textContent = t.emails.join(', ');
+      document.getElementById('mod-value').textContent = t.mod;
+      document.getElementById('reg-value').textContent = t.reg;
+      document.getElementById('duns-value').textContent = t.duns;
+    }
+  </script>
+</body>
+</html>
