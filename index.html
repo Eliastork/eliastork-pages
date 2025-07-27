@@ -137,7 +137,7 @@
       <div class="panel">
         <p id="why-text"></p>
         <div style="margin-top: 1rem;">
-          
+          <h3 id="video-title"></h3>
           <video style="width: 100%;" autoplay muted controls>
             <source src="ELIASTORK_video_subtitles_debussy.mp4" type="video/mp4">
             Your browser does not support the video tag.
@@ -150,16 +150,16 @@
 
       <button class="cloud-button" onclick="togglePanel(this)"><span id="acc-contact"></span></button>
       <div class="panel">
-        
+        <h2 id="contact-title"></h2>
         <div class="contact-columns">
           <div>
             <p><strong id="label-address"></strong><br><span id="addr-value"></span></p>
-            <p><strong id="label-phones"></strong><br></p>
-            
+            <p><strong id="label-phones"></strong><br><span id="phone-value"></span></p>
+            <p><a id="phone-link" href="" target="_blank"></a></p>
           </div>
           <div>
             <p><strong id="label-emails"></strong><br><span id="email-value"></span></p>
-            
+            <p><a id="email-link" href="" target="_blank"></a></p>
             <p>
               <strong id="label-mod"></strong> <span id="mod-value"></span><br>
               <strong id="label-reg"></strong> <span id="reg-value"></span><br>
@@ -366,18 +366,14 @@
       document.getElementById('duns-value').textContent = t.duns;
 
       // Ссылки WhatsApp и Email
-      const phoneMatch = t.phones.match(/\+?\d[\d\s\/\-]+/g);
-      if (phoneMatch && phoneMatch.length > 0) {
-        const waLinks = phoneMatch.map(num => {
-          const phoneClean = num.replace(/\D/g, '');
-          return `<a href="https://wa.me/${phoneClean}" target="_blank">📱 ${num}</a>`;
-        });
-        document.getElementById('phone-value').innerHTML = waLinks.join('<br>');
+      const phoneMatch = t.phones.match(/\+?\d[\d\s\/-]+/);
+      if (phoneMatch) {
+        const phoneClean = phoneMatch[0].replace(/\D/g, '');
+        document.getElementById('phone-value').innerHTML = 'https://wa.me/' + phoneClean;
+        // удалено = '📱 WhatsApp';
       }
-      const emailLinks = t.emails.map(email => {
-        return `<a href="mailto:${email}" target="_blank">${email}</a>`;
-      });
-      document.getElementById('email-value').innerHTML = emailLinks.join('<br>');
+      document.getElementById('email-value').innerHTML = 'mailto:' + t.emails[0];
+      // удалено = '✉️ Email Us';
     }
 
     window.onload = function() {
