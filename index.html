@@ -359,8 +359,8 @@
       document.getElementById('label-reg').textContent = t.labels.reg;
       document.getElementById('label-duns').textContent = t.labels.duns;
       document.getElementById('addr-value').textContent = t.address;
-      
-      
+      document.getElementById('phone-value').textContent = t.phones;
+      document.getElementById('email-value').textContent = t.emails.join(', ');
       document.getElementById('mod-value').textContent = t.mod;
       document.getElementById('reg-value').textContent = t.reg;
       document.getElementById('duns-value').textContent = t.duns;
@@ -369,11 +369,11 @@
       const phoneMatch = t.phones.match(/\+?\d[\d\s\/-]+/);
       if (phoneMatch) {
         const phoneClean = phoneMatch[0].replace(/\D/g, '');
-        document.getElementById('phone-value').innerHTML = 'https://wa.me/' + phoneClean;
-        // удалено = '📱 WhatsApp';
+        document.getElementById('phone-link').href = 'https://wa.me/' + phoneClean;
+        document.getElementById('phone-link').textContent = '📱 WhatsApp';
       }
-      document.getElementById('email-value').innerHTML = 'mailto:' + t.emails[0];
-      // удалено = '✉️ Email Us';
+      document.getElementById('email-link').href = 'mailto:' + t.emails[0];
+      document.getElementById('email-link').textContent = '✉️ Email Us';
     }
 
     window.onload = function() {
