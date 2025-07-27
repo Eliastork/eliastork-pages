@@ -384,6 +384,28 @@
       document.getElementById('duns-value').textContent = t.duns;
 
       // Ссылки WhatsApp и Email
+      // Создание кликабельных ссылок на телефоны и email
+const phoneMatch = t.phones.match(/\+?\d[\d\s/-]+/g);
+if (phoneMatch) {
+    phoneMatch.forEach((phone, index) => {
+        const phoneClean = phone.replace(/\D/g, '');
+        const phoneLink = document.createElement('a');
+        phoneLink.href = 'https://wa.me/' + phoneClean;
+        phoneLink.textContent = `📱 WhatsApp ${index + 1}: ${phone}`;
+        phoneLink.style.display = 'block';
+        document.body.appendChild(phoneLink);
+    });
+}
+
+if (Array.isArray(t.emails)) {
+    t.emails.forEach((email, index) => {
+        const emailLink = document.createElement('a');
+        emailLink.href = 'mailto:' + email;
+        emailLink.textContent = `📧 Email ${index + 1}: ${email}`;
+        emailLink.style.display = 'block';
+        document.body.appendChild(emailLink);
+    });
+}
       const phoneMatch = t.phones.match(/\+?\d[\d\s\/-]+/);
       if (phoneMatch) {
         const phoneClean = phoneMatch[0].replace(/\D/g, '');
