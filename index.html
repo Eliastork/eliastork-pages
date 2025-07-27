@@ -366,19 +366,21 @@
       document.getElementById('duns-value').textContent = t.duns;
 
       // Ссылки WhatsApp и Email
-const phoneMatch = t.phones.match(/\+?\d[\d\s\/\-]+/g);
-if (phoneMatch && phoneMatch.length > 0) {
-  const waLinks = phoneMatch.map(num => {
-    const phoneClean = num.replace(/\D/g, '');
-    return `<a href="https://wa.me/${phoneClean}" target="_blank">📱 ${num}</a>`;
-  });
-  document.getElementById('phone-link').innerHTML = waLinks.join('<br>');
-}
-const emailLinks = t.emails.map(email => {
-  return `<a href="mailto:${email}" target="_blank">${email}</a>`;
-});
-document.getElementById('email-link').innerHTML = emailLinks.join('<br>');
-window.onload = function() {
+      const phoneMatch = t.phones.match(/\+?\d[\d\s\/\-]+/g);
+      if (phoneMatch && phoneMatch.length > 0) {
+        const waLinks = phoneMatch.map(num => {
+          const phoneClean = num.replace(/\D/g, '');
+          return `<a href="https://wa.me/${phoneClean}" target="_blank">📱 ${num}</a>`;
+        });
+        document.getElementById('phone-link').innerHTML = waLinks.join('<br>');
+      }
+      const emailLinks = t.emails.map(email => {
+        return `<a href="mailto:${email}" target="_blank">${email}</a>`;
+      });
+      document.getElementById('email-link').innerHTML = emailLinks.join('<br>');
+    }
+
+    window.onload = function() {
       setLanguage('en');
     }
   </script>
