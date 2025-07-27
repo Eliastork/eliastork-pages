@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="description" content="ELIASTORK LTD - Engineering and supply solutions for the pharmaceutical and industrial sectors. Supply of GMP equipment, CNC machinery, packaging systems, and more.">
   <title>ELIASTORK LTD – Engineering & Supply Solutions</title>
   <style>
     body {
@@ -11,6 +12,11 @@
       padding: 0;
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
+    }
+    h2 { /* Сброс стилей для h2, используемых в кнопках */
+        margin: 0;
+        font-size: inherit;
+        font-weight: inherit;
     }
     body[dir="rtl"] { text-align: right; }
     body[dir="ltr"] { text-align: left; }
@@ -35,6 +41,12 @@
       cursor: pointer;
       border: none;
       background: none;
+      transition: transform 0.2s ease;
+    }
+    .language-switcher button.active-lang {
+      transform: scale(1.2);
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.2);
     }
     .cloud-button {
       background: url('cloud-button-transparent.png') no-repeat center left;
@@ -58,7 +70,7 @@
       transform: scale(1.05);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
-    .cloud-button span {
+    .cloud-button h2 { /* h2 внутри кнопки */
       color: #D8E6F3;
       text-shadow: 0 0 15px rgba(0, 128, 255, 0.9);
     }
@@ -96,7 +108,7 @@
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
-      max-height: 1000px;
+      max-height: 1200px; /* Увеличено для формы */
       padding: 1rem;
     }
     .right-column {
@@ -113,12 +125,54 @@
       gap: 1rem;
       align-items: flex-start;
     }
+    /* Стили для формы */
+    #contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    #contact-form label {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    #contact-form input,
+    #contact-form textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+    #contact-form button {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #4A90E2;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #contact-form button:hover {
+      background-color: #357ABD;
+    }
+    .form-divider {
+        border: none;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        margin: 2rem 0;
+    }
     @media (max-width: 600px) {
       .cloud-button {
         height: 60px;
         font-size: 1.2rem;
       }
-      .cloud-button span {
+      .cloud-button h2 {
         color: #B0C4DE;
         text-shadow: 0 0 10px rgba(100, 149, 237, 0.8);
       }
@@ -137,13 +191,13 @@
       <button onclick="setLanguage('he')">🇮🇱</button>
     </div>
     <div class="accordion-container">
-      <button class="cloud-button" onclick="togglePanel(this)" aria-expanded="false" aria-controls="panel-about">✨ <span id="acc-about"></span></button>
+      <button class="cloud-button" onclick="togglePanel(this)" aria-expanded="false" aria-controls="panel-about">✨ <h2 id="acc-about"></h2></button>
       <div class="panel" id="panel-about" role="region" aria-labelledby="acc-about"><ul id="about-list"></ul></div>
 
-      <button class="cloud-button" onclick="togglePanel(this)" aria-expanded="false" aria-controls="panel-offer">📈 <span id="acc-offer"></span></button>
+      <button class="cloud-button" onclick="togglePanel(this)" aria-expanded="false" aria-controls="panel-offer">📈 <h2 id="acc-offer"></h2></button>
       <div class="panel" id="panel-offer" role="region" aria-labelledby="acc-offer"><ul id="offerings-list"></ul></div>
 
-      <button class="cloud-button" onclick="togglePanel(this)" aria-expanded="false" aria-controls="panel-why">✪ <span id="acc-why"></span></button>
+      <button class="cloud-button" onclick="togglePanel(this)" aria-expanded="false" aria-controls="panel-why">✪ <h2 id="acc-why"></h2></button>
       <div class="panel" id="panel-why" role="region" aria-labelledby="acc-why">
         <p id="why-text"></p>
         <div style="margin-top: 1rem;">
@@ -157,12 +211,31 @@
         </div>
       </div>
 
-      <button class="cloud-button" onclick="togglePanel(this)" aria-expanded="false" aria-controls="panel-services">🛠 <span id="acc-services"></span></button>
+      <button class="cloud-button" onclick="togglePanel(this)" aria-expanded="false" aria-controls="panel-services">🛠️ <h2 id="acc-services"></h2></button>
       <div class="panel" id="panel-services" role="region" aria-labelledby="acc-services"><ul id="services-list"></ul></div>
 
-      <button class="cloud-button" onclick="togglePanel(this)" aria-expanded="false" aria-controls="panel-contact"><span id="acc-contact"></span></button>
+      <button class="cloud-button" onclick="togglePanel(this)" aria-expanded="false" aria-controls="panel-contact"><h2 id="acc-contact"></h2></button>
       <div class="panel" id="panel-contact" role="region" aria-labelledby="acc-contact">
         <h2 id="contact-title"></h2>
+        
+        <form id="contact-form" action="https://formspree.io/f/xwpqodal" method="POST">
+          <div class="form-group">
+            <label for="name" id="label-name"></label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email" id="label-email-form"></label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message" id="label-message"></label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" id="submit-button"></button>
+        </form>
+        <p id="form-status"></p>
+        <hr class="form-divider">
+        
         <div class="contact-columns">
             <div>
               <p><strong id="label-address"></strong><br><span id="addr-value"></span></p>
@@ -172,7 +245,7 @@
               <p id="email-link"></p>
               <div id="company-details"></div>
             </div>
-          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -203,7 +276,11 @@
           emails: "📧 Emails",
           mod: "🏷️ MOD Vendor ID",
           reg: "🏢 Company Reg. No.",
-          duns: "📊 DUNS Number"
+          duns: "📊 DUNS Number",
+          name: "Your Name:",
+          email_form: "Your Email:",
+          message: "Message:",
+          submit: "Send Message"
         },
         about: ["We are an engineering and supply company with expertise in pharma and industry.","Based in Israel, serving clients worldwide."],
         offerings: ["GMP Pharmaceutical Equipment: Mixing, granulation, tableting, packaging","CNC & Metalworking Machinery: Lathes, lasers, guillotines, accessories","Packaging & Sorting Systems","Temperature & Climate Test Chambers","Industrial Raw Materials & Metals","Auxiliary Equipment for Production & Storage","Water Distribution Systems: Pumps, valves, controls","Electrical Equipment for Industry","Modernization & Spare Parts Supply"],
@@ -231,7 +308,11 @@
           emails: "📧 Email",
           mod: "🏷️ ID поставщика MOD",
           reg: "🏢 Регистрационный номер",
-          duns: "📊 Номер D-U-N-S"
+          duns: "📊 Номер D-U-N-S",
+          name: "Ваше имя:",
+          email_form: "Ваш Email:",
+          message: "Сообщение:",
+          submit: "Отправить сообщение"
         },
         about: ["Мы — инженерная и снабженческая компания с опытом в фармацевтике и промышленности.","Базируемся в Израиле, обслуживаем клиентов по всему миру."],
         offerings: ["Фармацевтическое оборудование GMP: смешивание, гранулирование, таблетирование, упаковка","Оборудование для металлообработки и ЧПУ: токарные станки, лазеры, гильотины, аксессуары","Системы упаковки и сортировки","Камеры температурных и климатических испытаний","Промышленные сырьевые материалы и металлы","Вспомогательное оборудование для производства и хранения","Системы водоснабжения: насосы, клапаны, контроллеры","Электрооборудование для промышленности","Модернизация и поставка запасных частей"],
@@ -259,7 +340,11 @@
           emails: "📧 אימיילים",
           mod: "🏷️ מזהה ספק",
           reg: "🏢 מספר רישום חברה",
-          duns: "📊 מספר"
+          duns: "📊 מספר",
+          name: "שם מלא:",
+          email_form: "אימייל:",
+          message: "הודעה:",
+          submit: "שלח הודעה"
         },
         about: ["חברת הנדסה ואספקה עם התמחות בפרמצבטיקה ובתעשייה.","ממוקמים בישראל ומשרתים לקוחות ברחבי העולם."],
         offerings: ["ציוד תרופתי GMP: ערבוב, גרנולציה, טבליות, אריזה","מכונות עיבוד שבבי ו־CNC: מחרטות, לייזרים, גיליוטינות, אביזרים","מערכות אריזה ומיון","תאי בדיקות טמפרטורה ואקלים","חומרי גלם ומתכות תעשייתיים","ציוד עזר לייצור ולאחסון","מערכות מים: משאבות, שסתומים, בקרות","ציוד חשמלי לתעשייה","שדרוגים ואספקת חלקי חילוף"],
@@ -289,6 +374,10 @@
       const t = translations[lang];
       document.documentElement.lang = lang;
       document.body.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+
+      // Обновление индикатора языка
+      document.querySelectorAll('.language-switcher button').forEach(b => b.classList.remove('active-lang'));
+      document.querySelector(`.language-switcher button[onclick="setLanguage('${lang}')"]`).classList.add('active-lang');
 
       ['about', 'offerings', 'services'].forEach(section => {
         const list = document.getElementById(section + '-list');
@@ -331,7 +420,6 @@
       });
       document.getElementById('email-link').innerHTML = emailLabel + emailLinks.join('<br>');
       
-      // --- ФИНАЛЬНАЯ ИСПРАВЛЕННАЯ ЛОГИКА ---
       const detailsContainer = document.getElementById('company-details');
       let detailsHTML = '';
       if (lang === 'he') {
@@ -348,8 +436,47 @@
         `;
       }
       detailsContainer.innerHTML = detailsHTML;
+
+      // Обновление текстов формы
+      document.getElementById('label-name').textContent = t.labels.name;
+      document.getElementById('label-email-form').textContent = t.labels.email_form;
+      document.getElementById('label-message').textContent = t.labels.message;
+      document.getElementById('submit-button').textContent = t.labels.submit;
     }
 
+    // --- Form Handling Script ---
+    var form = document.getElementById("contact-form");
+
+    async function handleSubmit(event) {
+      event.preventDefault();
+      var status = document.getElementById("form-status");
+      var data = new FormData(event.target);
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          status.innerHTML = "Thanks for your submission!"; // Можно добавить в переводы
+          form.reset()
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+            } else {
+              status.innerHTML = "Oops! There was a problem submitting your form"
+            }
+          })
+        }
+      }).catch(error => {
+        status.innerHTML = "Oops! There was a problem submitting your form"
+      });
+    }
+    form.addEventListener("submit", handleSubmit)
+    
+    // Инициализация при загрузке
     window.onload = function() {
       setLanguage('ru');
     }
