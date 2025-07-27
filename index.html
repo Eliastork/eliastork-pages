@@ -170,11 +170,7 @@
             </div>
             <div>
               <p id="email-link"></p>
-              <p>
-                <strong id="label-mod"></strong> <span id="mod-value"></span><br>
-                <strong id="label-reg"></strong> <span id="reg-value"></span><br>
-                <strong id="label-duns"></strong> <span id="duns-value"></span>
-              </p>
+              <p id="company-details"></p>
             </div>
           </div>
       </div>
@@ -378,21 +374,12 @@
       document.getElementById('footer-text').textContent = t.footer;
 
       document.getElementById('label-address').textContent = t.labels.address;
-      document.getElementById('label-mod').textContent = t.labels.mod;
-      document.getElementById('label-reg').textContent = t.labels.reg;
-      document.getElementById('label-duns').textContent = t.labels.duns;
-
       document.getElementById('addr-value').textContent = t.address;
-      document.getElementById('mod-value').textContent = t.mod;
-      document.getElementById('reg-value').textContent = t.reg;
-      document.getElementById('duns-value').textContent = t.duns;
-
-      // --- ИСПРАВЛЕННАЯ ЛОГИКА ТЕЛЕФОНОВ ---
+      
       if (Array.isArray(t.phones) && t.phones.length > 0) {
         const phoneLabel = `<strong>${t.labels.phones}</strong><br>`;
         const waLinks = t.phones.map(num => {
           const phoneClean = num.replace(/\D/g, '');
-          // Оборачиваем номер в span с dir="ltr" для корректного отображения
           return `<a href="https://wa.me/${phoneClean}" target="_blank">📱 <span dir="ltr">${num}</span></a>`;
         });
         document.getElementById('phone-link').innerHTML = phoneLabel + waLinks.join('<br>');
@@ -403,6 +390,32 @@
         return `<a href="mailto:${email}" target="_blank">${email}</a>`;
       });
       document.getElementById('email-link').innerHTML = emailLabel + emailLinks.join('<br>');
+
+      // --- ИСПРАВЛЕННАЯ ЛОГИКА РЕКВИЗИТОВ ---
+      const detailsContainer = document.getElementById('company-details');
+      const detailsHTML = `
+        <span dir="ltr"><strong>${t.labels.mod}</strong> ${t.mod}</span><br>
+        <span dir="ltr"><strong>${t.labels.reg}</strong> ${t.reg}</span><br>
+        <span dir="ltr"><strong>${t.labels.duns}</strong> ${t.duns}</span>
+      `;
+      // Для языков LTR (английский, русский) метки должны быть слева
+      const detailsHTML_LTR = `
+        <strong>${t.labels.mod}</strong> <span dir="ltr">${t.mod}</span><br>
+        <strong>${t.labels.reg}</strong> <span dir="ltr">${t.reg}</span><br>
+        <strong>${t.labels.duns}</strong> <span dir="ltr">${t.duns}</span>
+      `;
+      // Для иврита (RTL) оборачиваем всю строку, чтобы метка была справа
+       const detailsHTML_RTL = `
+        <span dir="ltr">${t.mod}</span> <strong>${t.labels.mod}</strong><br>
+        <span dir="ltr">${t.reg}</span> <strong>${t.labels.reg}</strong><br>
+        <span dir="ltr">${t.duns}</span> <strong>${t.labels.duns}</strong>
+      `;
+      
+      if (lang === 'he') {
+        detailsContainer.innerHTML = detailsHTML_RTL;
+      } else {
+        detailsContainer.innerHTML = detailsHTML_LTR;
+      }
     }
 
     window.onload = function() {
