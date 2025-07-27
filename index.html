@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>ELIASTORK LTD – Engineering & Supply Solutions</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ELIASTORK LTD – Engineering &amp; Supply Solutions</title>
+<style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -116,65 +117,60 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>ELIASTORK LTD</h1>
-    <p id="slogan"></p>
-  </header>
-  <div class="right-column">
-    <div class="language-switcher">
-      <button onclick="setLanguage('en')">🇬🇧</button>
-      <button onclick="setLanguage('ru')">🇷🇺</button>
-      <button onclick="setLanguage('he')">🇮🇱</button>
-    </div>
-    <div class="accordion-container">
-      <button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about"></span></button>
-      <div class="panel"><ul id="about-list"></ul></div>
-
-      <button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer"></span></button>
-      <div class="panel"><ul id="offerings-list"></ul></div>
-
-      <button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why"></span></button>
-      <div class="panel">
-        <p id="why-text"></p>
-        <div style="margin-top: 1rem;">
-          <h3 id="video-title"></h3>
-          <video style="width: 100%;" autoplay muted controls>
-            <source src="ELIASTORK_video_subtitles_debussy.mp4" type="video/mp4">
+<header>
+<h1>ELIASTORK LTD</h1>
+<p id="slogan"></p>
+</header>
+<div class="right-column">
+<div class="language-switcher">
+<button onclick="setLanguage('en')">🇬🇧</button>
+<button onclick="setLanguage('ru')">🇷🇺</button>
+<button onclick="setLanguage('he')">🇮🇱</button>
+</div>
+<div class="accordion-container">
+<button class="cloud-button" onclick="togglePanel(this)">✨ <span id="acc-about"></span></button>
+<div class="panel"><ul id="about-list"></ul></div>
+<button class="cloud-button" onclick="togglePanel(this)">📈 <span id="acc-offer"></span></button>
+<div class="panel"><ul id="offerings-list"></ul></div>
+<button class="cloud-button" onclick="togglePanel(this)">✪ <span id="acc-why"></span></button>
+<div class="panel">
+<p id="why-text"></p>
+<div style="margin-top: 1rem;">
+<h3 id="video-title"></h3>
+<video autoplay="" controls="" muted="" style="width: 100%;">
+<source src="ELIASTORK_video_subtitles_debussy.mp4" type="video/mp4"/>
             Your browser does not support the video tag.
           </video>
-        </div>
-      </div>
+</div>
+</div>
+<button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services"></span></button>
+<div class="panel"><ul id="services-list"></ul></div>
+<button class="cloud-button" onclick="togglePanel(this)"><span id="acc-contact"></span></button>
+<div class="panel">
+<h2 id="contact-title"></h2>
+<div class="contact-columns">
+<div>
+<p><strong id="label-address"></strong><br/><span id="addr-value"></span></p>
 
-      <button class="cloud-button" onclick="togglePanel(this)">🛠 <span id="acc-services"></span></button>
-      <div class="panel"><ul id="services-list"></ul></div>
+<p><a href="" id="phone-link" target="_blank"></a></p>
+</div>
+<div>
 
-      <button class="cloud-button" onclick="togglePanel(this)"><span id="acc-contact"></span></button>
-      <div class="panel">
-        <h2 id="contact-title"></h2>
-        <div class="contact-columns">
-          <div>
-            <p><strong id="label-address"></strong><br><span id="addr-value"></span></p>
-            <p><strong id="label-phones"></strong><br><span id="phone-value"></span></p>
-            <p><a id="phone-link" href="" target="_blank"></a></p>
-          </div>
-          <div>
-            <p><strong id="label-emails"></strong><br><span id="email-value"></span></p>
-            <p><a id="email-link" href="" target="_blank"></a></p>
-            <p>
-              <strong id="label-mod"></strong> <span id="mod-value"></span><br>
-              <strong id="label-reg"></strong> <span id="reg-value"></span><br>
-              <strong id="label-duns"></strong> <span id="duns-value"></span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <p id="footer-text"></p>
-  </footer>
-
-  <script>
+<p><a href="" id="email-link" target="_blank"></a></p>
+<p>
+<strong id="label-mod"></strong> <span id="mod-value"></span><br/>
+<strong id="label-reg"></strong> <span id="reg-value"></span><br/>
+<strong id="label-duns"></strong> <span id="duns-value"></span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<p id="footer-text"></p>
+</footer>
+<script>
     const translations = {
   en: {
     slogan: "Engineering & Supply Solutions for Pharma & Industry",
