@@ -372,12 +372,12 @@
           const phoneClean = num.replace(/\D/g, '');
           return `<a href="https://wa.me/${phoneClean}" target="_blank">📱 ${num}</a>`;
         });
-        document.getElementById('phone-link').innerHTML = waLinks.join('<br>');
+        document.getElementById('phone-value').innerHTML = waLinks.join('<br>');
       }
       const emailLinks = t.emails.map(email => {
         return `<a href="mailto:${email}" target="_blank">${email}</a>`;
       });
-      document.getElementById('email-link').innerHTML = emailLinks.join('<br>');
+      document.getElementById('email-value').innerHTML = emailLinks.join('<br>');
     }
 
     window.onload = function() {
