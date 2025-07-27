@@ -76,7 +76,6 @@
       margin-left: auto;
       margin-right: 0;
     }
-    /* НОВОЕ ПРАВИЛО ДЛЯ ИВРИТА */
     body[dir="rtl"] .accordion-container {
       align-items: flex-start;
     }
@@ -220,7 +219,7 @@
           "Technical support and maintenance services"
         ],
         address: "Emil Zola 28, Rishon LeZion, 7528251, Israel",
-        phones: "+972-52-5444823 / +972-52-7204290",
+        phones: ["+972-52-5444823", "+972-52-7204290"],
         emails: ["maximchuchnov@eliastork.com", "vladimirpogost@eliastork.com"],
         mod: "0011649406",
         reg: "516593016",
@@ -268,7 +267,7 @@
           "Техническая поддержка и сервисное обслуживание"
         ],
         address: "Эмиль Золя 28, Ришон ле-Цион, 7528251, Израиль",
-        phones: "+972-52-5444823 / +972-52-7204290",
+        phones: ["+972-52-5444823", "+972-52-7204290"],
         emails: ["maximchuchnov@eliastork.com", "vladimirpogost@eliastork.com"],
         mod: "0011649406",
         reg: "516593016",
@@ -316,7 +315,7 @@
           "תמיכה טכנית ושירות תחזוקה"
         ],
         address: "28 אמיל זולא, ראשון לציון, 7528251, ישראל",
-        phones: "+972-52-5444823 / +972-52-7204290",
+        phones: ["+972-52-5444823", "+972-52-7204290"],
         emails: ["maximchuchnov@eliastork.com", "vladimirpogost@eliastork.com"],
         mod: "0011649406",
         reg: "516593016",
@@ -388,12 +387,13 @@
       document.getElementById('reg-value').textContent = t.reg;
       document.getElementById('duns-value').textContent = t.duns;
 
-      const phoneMatch = t.phones.match(/\+?\d[\d\s\/\-]+/g);
-      if (phoneMatch && phoneMatch.length > 0) {
+      // --- ИСПРАВЛЕННАЯ ЛОГИКА ТЕЛЕФОНОВ ---
+      if (Array.isArray(t.phones) && t.phones.length > 0) {
         const phoneLabel = `<strong>${t.labels.phones}</strong><br>`;
-        const waLinks = phoneMatch.map(num => {
+        const waLinks = t.phones.map(num => {
           const phoneClean = num.replace(/\D/g, '');
-          return `<a href="https://wa.me/${phoneClean}" target="_blank">📱 ${num.trim()}</a>`;
+          // Оборачиваем номер в span с dir="ltr" для корректного отображения
+          return `<a href="https://wa.me/${phoneClean}" target="_blank">📱 <span dir="ltr">${num}</span></a>`;
         });
         document.getElementById('phone-link').innerHTML = phoneLabel + waLinks.join('<br>');
       }
