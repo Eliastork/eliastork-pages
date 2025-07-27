@@ -242,7 +242,6 @@
               <p id="phone-link"></p>
             </div>
             <div>
-              <p id="email-link"></p>
               <div id="company-details"></div>
             </div>
         </div>
@@ -265,7 +264,6 @@
         contact_title: "Contact Us",
         address: "Emil Zola 28, Rishon LeZion, 7528251, Israel",
         phones: ["+972-52-5444823", "+972-52-7204290"],
-        emails: ["maximchuchnov@eliastork.com", "vladimirpogost@eliastork.com"],
         mod: "0011649406",
         reg: "516593016",
         duns: "565064128",
@@ -273,7 +271,6 @@
         labels: {
           address: "📍 Address",
           phones: "📞 Phones",
-          emails: "📧 Emails",
           mod: "🏷️ MOD Vendor ID",
           reg: "🏢 Company Reg. No.",
           duns: "📊 DUNS Number",
@@ -297,7 +294,6 @@
         contact_title: "Связаться с нами",
         address: "Эмиль Золя 28, Ришон ле-Цион, 7528251, Израиль",
         phones: ["+972-52-5444823", "+972-52-7204290"],
-        emails: ["maximchuchnov@eliastork.com", "vladimirpogost@eliastork.com"],
         mod: "0011649406",
         reg: "516593016",
         duns: "565064128",
@@ -305,7 +301,6 @@
         labels: {
           address: "📍 Адрес",
           phones: "📞 Телефоны",
-          emails: "📧 Email",
           mod: "🏷️ ID поставщика MOD",
           reg: "🏢 Регистрационный номер",
           duns: "📊 Номер D-U-N-S",
@@ -329,7 +324,6 @@
         contact_title: "צור קשר",
         address: "28 אמיל זולא, ראשון לציון, 7528251, ישראל",
         phones: ["+972-52-5444823", "+972-52-7204290"],
-        emails: ["maximchuchnov@eliastork.com", "vladimirpogost@eliastork.com"],
         mod: "0011649406",
         reg: "516593016",
         duns: "565064128",
@@ -337,7 +331,6 @@
         labels: {
           address: "📍 כתובת",
           phones: "📞 טלפונים",
-          emails: "📧 אימיילים",
           mod: "🏷️ מזהה ספק",
           reg: "🏢 מספר רישום חברה",
           duns: "📊 מספר",
@@ -414,12 +407,6 @@
         document.getElementById('phone-link').innerHTML = phoneLabel + waLinks.join('<br>');
       }
 
-      const emailLabel = `<strong>${t.labels.emails}:</strong><br>`;
-      const emailLinks = t.emails.map(email => {
-        return `<a href="mailto:${email}" target="_blank">${email}</a>`;
-      });
-      document.getElementById('email-link').innerHTML = emailLabel + emailLinks.join('<br>');
-      
       const detailsContainer = document.getElementById('company-details');
       let detailsHTML = '';
       if (lang === 'he') {
@@ -459,7 +446,7 @@
         }
       }).then(response => {
         if (response.ok) {
-          status.innerHTML = "Thanks for your submission!"; // Можно добавить в переводы
+          status.innerHTML = "Thanks for your submission!";
           form.reset()
         } else {
           response.json().then(data => {
