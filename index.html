@@ -70,11 +70,15 @@
     .accordion-container {
       display: flex;
       flex-direction: column;
-      align-items: flex-end; /* Выравнивает все дочерние элементы по правому краю */
+      align-items: flex-end;
       max-width: 800px;
       width: 100%;
       margin-left: auto;
       margin-right: 0;
+    }
+    /* НОВОЕ ПРАВИЛО ДЛЯ ИВРИТА */
+    body[dir="rtl"] .accordion-container {
+      align-items: flex-start;
     }
     .panel {
       width: 100%;
@@ -119,7 +123,6 @@
         color: #B0C4DE;
         text-shadow: 0 0 10px rgba(100, 149, 237, 0.8);
       }
-      /* УДАЛЕНО КОНФЛИКТУЮЩЕЕ ПРАВИЛО */
     }
   </style>
 </head>
