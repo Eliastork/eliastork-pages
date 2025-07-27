@@ -141,6 +141,21 @@
           <video style="width: 100%;" autoplay muted controls>
             <source src="ELIASTORK_video_subtitles_debussy.mp4" type="video/mp4">
             Your browser does not support the video tag.
+            <button class="cloud-button" onclick="togglePanel(this)">📬 <span id="acc-feedback">Обратная связь</span></button>
+<div class="panel">
+  <form action="mailto:vladimirpogost@eliastork.com" method="POST" enctype="text/plain" style="display: flex; flex-direction: column; gap: 1rem;">
+    <label>Имя:<br>
+      <input type="text" name="name" required style="width: 100%;">
+    </label>
+    <label>Email:<br>
+      <input type="email" name="email" required style="width: 100%;">
+    </label>
+    <label>Сообщение:<br>
+      <textarea name="message" rows="5" required style="width: 100%;"></textarea>
+    </label>
+    <button type="submit" class="cloud-button"><span>📤 Отправить заявку</span></button>
+  </form>
+</div>
           </video>
         </div>
       </div>
@@ -183,6 +198,7 @@
     why_title: "Why Choose Eliastork?",
     services_title: "Service & Engineering",
     contact_title: "Contact Us",
+    feedback_title:  "Feedback", 
     about: [
       "We are an engineering and supply company with expertise in pharma and industry.",
       "Based in Israel, serving clients worldwide."
@@ -230,6 +246,7 @@
     why_title: "Почему выбирают Eliastork?",
     services_title: "Услуги и инженерия",
     contact_title: "Связаться с нами",
+    feedback_title: "Обратная связь", 
     about: [
       "Мы — инженерная и снабженческая компания с опытом в фармацевтике и промышленности.",
       "Базируемся в Израиле, обслуживаем клиентов по всему миру."
@@ -277,6 +294,7 @@
     why_title: "למה לבחור ב־Eliastork?",
     services_title: "שירותים והנדסה",
     contact_title: "צור קשר",
+    feedback_title: "משוב",
     about: [
       "חברת הנדסה ואספקה עם התמחות בפרמצבטיקה ובתעשייה.",
       "ממוקמים בישראל ומשרתים לקוחות ברחבי העולם."
