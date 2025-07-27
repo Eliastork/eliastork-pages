@@ -13,6 +13,11 @@
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
     }
+    h2 { /* Сброс стилей для h2, используемых в кнопках */
+        margin: 0;
+        font-size: inherit;
+        font-weight: inherit;
+    }
     body[dir="rtl"] { text-align: right; }
     body[dir="ltr"] { text-align: left; }
     body[dir="rtl"] .contact-columns {
@@ -47,7 +52,7 @@
       background: url('cloud-button-transparent.png') no-repeat center left;
       background-size: contain;
       background-color: transparent;
-      width: 75%;
+      width: 90%; /* Сделали немного шире для мобильных */
       max-width: 450px;
       height: 90px;
       border: none;
@@ -65,11 +70,10 @@
       transform: scale(1.05);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
-    /* Стиль для текста внутри кнопки (исправлено на span) */
     .cloud-button span {
       color: #D8E6F3;
       text-shadow: 0 0 15px rgba(0, 128, 255, 0.9);
-      font-weight: bold; /* Можно сделать текст жирным для акцента */
+      font-weight: bold;
     }
     @keyframes float {
       0%   { transform: translateY(0); }
@@ -80,10 +84,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      max-width: 800px;
       width: 100%;
-      margin-left: auto;
-      margin-right: 0;
     }
     body[dir="rtl"] .accordion-container {
       align-items: flex-start;
@@ -105,16 +106,19 @@
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
-      max-height: 1200px; /* Увеличено для формы */
+      max-height: 1200px;
       padding: 1rem;
+      box-sizing: border-box; /* Важно для корректных размеров */
     }
     .right-column {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin: 0 auto;
-      width: 800px;
-      max-width: 100%;
+      width: 100%; /* Убрали фиксированную ширину */
+      max-width: 800px; /* Ограничили максимальную ширину */
+      padding: 0 1rem; /* Добавили отступы по бокам */
+      box-sizing: border-box; /* Важно для корректных размеров */
     }
     .contact-columns {
       display: flex;
@@ -122,7 +126,6 @@
       gap: 1rem;
       align-items: flex-start;
     }
-    /* Стили для формы */
     #contact-form {
       display: flex;
       flex-direction: column;
@@ -164,10 +167,25 @@
         border-top: 1px solid rgba(0, 0, 0, 0.1);
         margin: 2rem 0;
     }
+    
+    /* --- УЛУЧШЕННАЯ АДАПТИВНОСТЬ --- */
+    
+    /* Для планшетов и узких десктопов */
+    @media (max-width: 820px) {
+      .accordion-container {
+        align-items: center; /* Центрируем для всех языков */
+      }
+      body[dir="rtl"] .accordion-container {
+        align-items: center; /* Переопределяем RTL-правило */
+      }
+    }
+
+    /* Для мобильных телефонов */
     @media (max-width: 600px) {
       .cloud-button {
         height: 60px;
         font-size: 1.2rem;
+        width: 100%; /* Растягиваем на всю ширину */
       }
       .cloud-button span {
         color: #B0C4DE;
