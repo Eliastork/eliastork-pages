@@ -1,16 +1,3 @@
-Конечно. Вот полная версия HTML-кода с внесёнными исправлениями.
-
-**Основные изменения:**
-
-  * **Улучшенная анимация:** Аккордеон теперь плавно открывается и закрывается.
-  * **Доступность (Accessibility):** Добавлены ARIA-атрибуты для кнопок и панелей, что улучшает навигацию для пользователей с экранными ридерами. Также динамически обновляется язык документа (`<html lang="...">`).
-  * **Исправлен JavaScript:** Функция `togglePanel` теперь управляет состоянием доступности, а в переводы добавлена недостающая строка для заголовка видео.
-
-Этот код полностью готов к использованию.
-
------
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -171,21 +158,19 @@
       <div class="panel" id="panel-contact" role="region" aria-labelledby="acc-contact">
         <h2 id="contact-title"></h2>
         <div class="contact-columns">
-          <div>
-            <p><strong id="label-address"></strong><br><span id="addr-value"></span></p>
-            <p><strong id="label-phones"></strong><br><span id="phone-value"></span></p>
-            <p id="phone-link"></p>
+            <div>
+              <p><strong id="label-address"></strong><br><span id="addr-value"></span></p>
+              <p id="phone-link"></p>
+            </div>
+            <div>
+              <p id="email-link"></p>
+              <p>
+                <strong id="label-mod"></strong> <span id="mod-value"></span><br>
+                <strong id="label-reg"></strong> <span id="reg-value"></span><br>
+                <strong id="label-duns"></strong> <span id="duns-value"></span>
+              </p>
+            </div>
           </div>
-          <div>
-            <p><strong id="label-emails"></strong><br><span id="email-value"></span></p>
-            <p id="email-link"></p>
-            <p>
-              <strong id="label-mod"></strong> <span id="mod-value"></span><br>
-              <strong id="label-reg"></strong> <span id="reg-value"></span><br>
-              <strong id="label-duns"></strong> <span id="duns-value"></span>
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   </main>
@@ -345,7 +330,6 @@
       const panel = button.nextElementSibling;
       const isExpanded = button.getAttribute('aria-expanded') === 'true';
 
-      // Close all other panels first to act like a true accordion
       document.querySelectorAll('.cloud-button').forEach(btn => {
         if (btn !== button) {
           btn.setAttribute('aria-expanded', 'false');
@@ -353,7 +337,6 @@
         }
       });
 
-      // Then toggle the current one
       button.setAttribute('aria-expanded', !isExpanded);
       panel.classList.toggle('show');
     }
@@ -362,7 +345,7 @@
       if (!translations[lang]) return;
       
       const t = translations[lang];
-      document.documentElement.lang = lang; // Set main lang attribute
+      document.documentElement.lang = lang;
       document.body.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
 
       ['about', 'offerings', 'services'].forEach(section => {
@@ -387,37 +370,37 @@
       document.getElementById('video-title').textContent = t.video_title || '';
       document.getElementById('contact-title').textContent = t.contact_title;
       document.getElementById('footer-text').textContent = t.footer;
+
       document.getElementById('label-address').textContent = t.labels.address;
-      document.getElementById('label-phones').textContent = t.labels.phones;
-      document.getElementById('label-emails').textContent = t.labels.emails;
       document.getElementById('label-mod').textContent = t.labels.mod;
       document.getElementById('label-reg').textContent = t.labels.reg;
       document.getElementById('label-duns').textContent = t.labels.duns;
+
       document.getElementById('addr-value').textContent = t.address;
-      document.getElementById('phone-value').textContent = t.phones;
-      document.getElementById('email-value').textContent = t.emails.join(', ');
       document.getElementById('mod-value').textContent = t.mod;
       document.getElementById('reg-value').textContent = t.reg;
       document.getElementById('duns-value').textContent = t.duns;
 
       const phoneMatch = t.phones.match(/\+?\d[\d\s\/\-]+/g);
       if (phoneMatch && phoneMatch.length > 0) {
+        const phoneLabel = `<strong>${t.labels.phones}</strong><br>`;
         const waLinks = phoneMatch.map(num => {
           const phoneClean = num.replace(/\D/g, '');
-          return `<a href="https://wa.me/${phoneClean}" target="_blank" style="text-decoration: none;">📱 ${num.trim()}</a>`;
+          return `<a href="https://wa.me/${phoneClean}" target="_blank">📱 ${num.trim()}</a>`;
         });
-        document.getElementById('phone-link').innerHTML = waLinks.join('<br>');
+        document.getElementById('phone-link').innerHTML = phoneLabel + waLinks.join('<br>');
       }
+
+      const emailLabel = `<strong>${t.labels.emails}</strong><br>`;
       const emailLinks = t.emails.map(email => {
         return `<a href="mailto:${email}" target="_blank">${email}</a>`;
       });
-      document.getElementById('email-link').innerHTML = emailLinks.join('<br>');
+      document.getElementById('email-link').innerHTML = emailLabel + emailLinks.join('<br>');
     }
 
     window.onload = function() {
-      setLanguage('ru'); // Set default language
+      setLanguage('ru');
     }
   </script>
 </body>
 </html>
-```
