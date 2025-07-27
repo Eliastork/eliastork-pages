@@ -67,7 +67,6 @@
       50%  { transform: translateY(-6px); }
       100% { transform: translateY(0); }
     }
-    /* ИЗМЕНЕНИЕ ЗДЕСЬ */
     .accordion-container {
       display: flex;
       flex-direction: column;
@@ -94,7 +93,7 @@
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
-      max-height: 1000px; /* Adjust if content is larger */
+      max-height: 1000px;
       padding: 1rem;
     }
     .right-column {
@@ -120,10 +119,7 @@
         color: #B0C4DE;
         text-shadow: 0 0 10px rgba(100, 149, 237, 0.8);
       }
-      /* Добавим правило для мобильных, чтобы контейнер не выравнивался по правому краю */
-      .accordion-container {
-        align-items: center;
-      }
+      /* УДАЛЕНО КОНФЛИКТУЮЩЕЕ ПРАВИЛО */
     }
   </style>
 </head>
